@@ -30,7 +30,7 @@ export default function LandingBanner() {
           .order("order_index", { ascending: true })
           .limit(1)
           .single()
-
+     
         if (data) {
           setBanner(data)
         } else {
@@ -45,7 +45,7 @@ export default function LandingBanner() {
           })
         }
       } catch (error) {
-        console.log("[v0] Error fetching banner, using default:", error)
+        console.log("Error fetching banner, using default:", error)
         setBanner({
           id: "default",
           title: "Welcome to Riayah Care",
