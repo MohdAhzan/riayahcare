@@ -1,0 +1,14 @@
+{
+  "navbar": {
+    "hospitals": "Hospitals",
+    "doctors": "Doctors",
+    "procedures": "Procedures",
+    "admin": "Admin",
+    "quote": "Get Quote"
+  },
+  "landing": {
+    "headline": "World-class healthcare at your fingertips",
+    "cta": "Contact us today"
+  }
+}
+
