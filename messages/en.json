@@ -1,10 +1,10 @@
 {
-  "navbar": {
+  "Navbar": {
     "hospitals": "Hospitals",
     "doctors": "Doctors",
     "procedures": "Procedures",
     "admin": "Admin",
-    "quote": "Get Quote"
+    "getQuote": "Get Quote"
   },
   "landing": {
     "headline": "World-class healthcare at your fingertips",
