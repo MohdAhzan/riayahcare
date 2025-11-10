@@ -6,9 +6,73 @@
     "admin": "Admin",
     "getQuote": "Get Quote"
   },
-  "landing": {
-    "headline": "World-class healthcare at your fingertips",
-    "cta": "Contact us today"
+
+
+  "Landing": {
+    "title": "Welcome to Riayah Care",
+    "subtitle": "Compassionate Care & World Class Treatment",
+    "cta_text": "Contact us"
+  },
+
+
+  "Form": {
+    "title": "Let Us Help You"
+  },
+
+
+  "specialty_tiles": {
+    "title": "Multi-Specialty Focus",
+    "tag": "We cover all medical needs, from hair transplants to heart transplants.",
+    "specialties": {
+      "cardiology": {
+        "name": "Cardiology",
+        "description": "Heart and cardiovascular disease treatment"
+      },
+      "oncology": {
+        "name": "Oncology",
+        "description": "Cancer treatment and tumor management"
+      },
+      "neurosurgery": {
+        "name": "Neurosurgery",
+        "description": "Brain and nervous system surgery"
+      },
+      "spine_surgery": {
+        "name": "Spine Surgery",
+        "description": "Spinal cord and vertebral treatments"
+      },
+      "orthopedics": {
+        "name": "Orthopedics",
+        "description": "Bone, joint, and limb treatments"
+      },
+      "gynecology": {
+        "name": "Gynecology",
+        "description": "Women's health and reproductive care"
+      },
+      "ivf_fertility": {
+        "name": "IVF/Fertility",
+        "description": "Fertility treatments and IVF procedures"
+      },
+      "liver_transplant": {
+        "name": "Liver Transplant",
+        "description": "Liver disease and transplant surgery"
+      }
+    },
+    "best":"Best",
+    "doctor":"Doctors in India",
+    "doc_data":"expert doctors specializing in",
+    "hospital":"Hospitals In India",
+    "hos_data":"hospitals with world-class",
+    "facilities":"facilities"
+  },
+
+
+  "help_widget":{
+      "title":"Need Help?",
+      "tag":"Our healthcare experts are ready to assist you with any questions about treatments or doctors.",
+      "24/7":"Available 24/7 for your inquiries"
   }
+
+
+
 }
 

@@ -1,13 +1,13 @@
 import { NextIntlClientProvider } from "next-intl";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono } from "next/font/google";
+//import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import { routing } from "@/i18n/routing";
 import { hasLocale } from "next-intl";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+//const _geist = Geist({ subsets: ["latin"] });
+//const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 type Props = {
   children: ReactNode;

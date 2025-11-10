@@ -7,6 +7,7 @@ import { CountrySelect, StateSelect, CitySelect } from "react-country-state-city
 import PhoneInput from "react-phone-input-2"
 import { createClient } from "@/lib/supabase/client"
 import { Upload, Loader2, CheckCircle } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 const SPECIALTIES = [
   "Cardiology",
@@ -53,7 +54,8 @@ export default function PatientInquiryForm(): React.ReactElement {
     gender: "",
     specialty: "",
   })
-
+  
+  const t= useTranslations("Form")
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [uploading, setUploading] = useState(false)
@@ -215,7 +217,7 @@ export default function PatientInquiryForm(): React.ReactElement {
       className="w-full max-w-2xl mx-auto space-y-4 bg-white rounded-2xl p-8 shadow-lg"
     >
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
-        Let Us Help You
+      {t("title")}   
       </h2>
 
       <input
