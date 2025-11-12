@@ -16,7 +16,14 @@
 
 
   "Form": {
-    "title": "Let Us Help You"
+    "title": "Let Us Help You",
+    "terms":"By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.",
+    "response":"Thank you! Your quote request has been submitted. We'll contact you soon!",
+    "gender" : {
+      "m":"male",
+      "f":"female",
+      "o":"other"
+    }
   },
 
 
@@ -70,9 +77,13 @@
       "title":"Need Help?",
       "tag":"Our healthcare experts are ready to assist you with any questions about treatments or doctors.",
       "24/7":"Available 24/7 for your inquiries"
+  },
+
+  "hospitals" : {
+    "title":"Top Hospitals Worldwide",
+     "tag" : "Access world-class healthcare from top accredited hospitals",
+    "view_all": "View All Hospitals"
   }
-
-
 
 }
 

@@ -56,6 +56,7 @@ export default function PatientInquiryForm(): React.ReactElement {
   })
   
   const t= useTranslations("Form")
+  const gender = useTranslations("Form.gender")
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [uploading, setUploading] = useState(false)
@@ -349,7 +350,10 @@ uploaded
       <div className="space-y-2">
         <label className="block font-semibold text-gray-700">Gender</label>
         <div className="flex gap-2 flex-wrap">
-          {["male", "female", "other"].map((option) => (
+          
+          {
+
+            [gender("m"), gender("f"),gender("o")].map((option) => (
             <button
               key={option}
               type="button"
@@ -376,12 +380,12 @@ formData.gender === option
 
       {submitted && (
         <div className="p-4 bg-green-100 border border-green-400 rounded-lg text-green-800 font-semibold">
-          Thank you! Your quote request has been submitted. We'll contact you soon!
+         {t("response")} 
         </div>
       )}
 
       <p className="text-xs text-gray-600 text-center">
-        By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.
+          {t("terms")} 
       </p>
     </form>
   )
