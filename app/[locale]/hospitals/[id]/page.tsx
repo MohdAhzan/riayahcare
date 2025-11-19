@@ -556,7 +556,7 @@ export default function HospitalDetailPage() {
       {/* MOBILE FLOATING BUTTON */}
       <button
         onClick={() => setShowModal(true)}
-        className=" btn-gls md:hidden fixed right-5 bottom-5 z-50 w-14 h-14 bg-emerald-600 text-white rounded-full shadow-xl flex items-center justify-center text-lg"
+        className=" btn-glass md:hidden fixed right-5 bottom-5 z-50 w-14 h-14 bg-emerald-600 text-white rounded-full shadow-xl flex items-center justify-center text-lg"
       >
         📞
       </button>

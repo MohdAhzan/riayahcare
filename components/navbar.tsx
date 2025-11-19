@@ -98,7 +98,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <Button className="btn-glass text-white">{t("getQuote")}</Button>
+          <Button href="#inquiry-form" className="btn-glass text-white">{t("getQuote")}</Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -168,7 +168,7 @@ export default function Navbar() {
             )}
           </div>
 
-          <Button className="btn-glass w-full text-white">{t("getQuote")}</Button>
+          <Button href="#inquiry-form" className="btn-glass w-full text-white">{t("getQuote")}</Button>
         </div>
       )}
     </nav>

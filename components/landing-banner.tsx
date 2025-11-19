@@ -1,21 +1,57 @@
+
+
+
+
+
 "use client"
 
 import { useEffect, useState } from "react"
+// Assuming createClient is correctly set up to handle Supabase environment variables
 import { createClient } from "@supabase/supabase-js"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+// ⭐ MODIFIED INTERFACE: title, subtitle, and cta_text will be extracted from translations
 interface Banner {
   id: string
-  title: string
-  subtitle: string | null
   image_url: string
-  cta_text: string
   cta_link: string
+  is_active: boolean
+  order_index: number
+  translations: {
+    en?: {
+      title: string
+      subtitle: string
+      cta_text: string
+    }
+    // Add other languages (ar, etc.) as needed
+    [key: string]: any
+  } | null
 }
 
+// Define a structured type for the data we actually use in the UI
+interface BannerDisplayData {
+    id: string
+    title: string
+    subtitle: string | null
+    image_url: string
+    cta_text: string
+    cta_link: string
+}
+
+const DEFAULT_BANNER: BannerDisplayData = {
+    id: "default",
+    title: "Welcome to Riayah Care",
+    subtitle: "Compassionate Care & World Class Treatment",
+    image_url:
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vecteezy_doctor-icon-virtual-screen-health-care-and-medical-on_12604205-inGwpDRPHTcYwpVYGm8H5Z37xv8z.jpg",
+    cta_text: "Get Quote",
+    cta_link: "/hospitals",
+}
+
+
 export default function LandingBanner() {
-  const [banner, setBanner] = useState<Banner | null>(null)
+  const [banner, setBanner] = useState<BannerDisplayData | null>(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -23,38 +59,47 @@ export default function LandingBanner() {
       try {
         const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
 
+        // ⭐ FIX 1: Select translations column
         const { data, error } = await supabase
           .from("banners")
-          .select("*")
+          // Select only necessary columns based on your schema
+          .select(`id, image_url, cta_link, is_active, order_index, translations`) 
           .eq("is_active", true)
           .order("order_index", { ascending: true })
           .limit(1)
           .single()
 
+        // ⭐ CRITICAL FIX: Handle Supabase error object explicitly
+        if (error) {
+            console.error("[v0] Supabase Query Error, using default:", error)
+            throw new Error(error.message || `Supabase query failed: ${error.code}`)
+        }
+        
+        // ⭐ FIX 2: Process fetched data
         if (data) {
-          setBanner(data)
+            const translationData = data.translations?.en;
+            
+            // Map the fetched data to the display structure
+            const displayBanner: BannerDisplayData = {
+                id: data.id,
+                image_url: data.image_url,
+                cta_link: data.cta_link || DEFAULT_BANNER.cta_link,
+                
+                // Extract text fields from the 'en' translation object
+                title: translationData?.title || DEFAULT_BANNER.title,
+                subtitle: translationData?.subtitle || DEFAULT_BANNER.subtitle,
+                cta_text: translationData?.cta_text || DEFAULT_BANNER.cta_text,
+            };
+            
+            setBanner(displayBanner)
         } else {
-          setBanner({
-            id: "default",
-            title: "Welcome to Riayah Care",
-            subtitle: "Compassionate Care & World Class Treatment",
-            image_url:
-              "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vecteezy_doctor-icon-virtual-screen-health-care-and-medical-on_12604205-inGwpDRPHTcYwpVYGm8H5Z37xv8z.jpg",
-            cta_text: "Get Quote",
-            cta_link: "/hospitals",
-          })
+            // No active banner found, use default
+            setBanner(DEFAULT_BANNER)
         }
       } catch (error) {
-        console.log("[v0] Error fetching banner, using default:", error)
-        setBanner({
-          id: "default",
-          title: "Welcome to Riayah Care",
-          subtitle: "Compassionate Care & World Class Treatment",
-          image_url:
-            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vecteezy_doctor-icon-virtual-screen-health-care-and-medical-on_12604205-inGwpDRPHTcYwpVYGm8H5Z37xv8z.jpg",
-          cta_text: "Get Quote",
-          cta_link: "/hospitals",
-        })
+        console.error("[v0] Error fetching banner, using default:", error instanceof Error ? error.message : error)
+        // Fallback to the default banner on any error
+        setBanner(DEFAULT_BANNER)
       } finally {
         setLoading(false)
       }
@@ -84,7 +129,7 @@ export default function LandingBanner() {
     >
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20" />
 
-      {/* Content */}
+      {/* Content (Use bannerDisplayData properties directly) */}
       <div className="relative z-10 text-center text-white px-4 max-w-2xl">
         <h1 className="text-5xl md:text-6xl font-bold mb-4 text-balance drop-shadow-lg">{banner.title}</h1>
         {banner.subtitle && (
@@ -99,3 +144,107 @@ export default function LandingBanner() {
     </div>
   )
 }
+
+
+
+//"use client"
+//
+//import { useEffect, useState } from "react"
+//import { createClient } from "@supabase/supabase-js"
+//import Link from "next/link"
+//import { Button } from "@/components/ui/button"
+//
+//interface Banner {
+//  id: string
+//  title: string
+//  subtitle: string | null
+//  image_url: string
+//  cta_text: string
+//  cta_link: string
+//}
+//
+//export default function LandingBanner() {
+//  const [banner, setBanner] = useState<Banner | null>(null)
+//  const [loading, setLoading] = useState(true)
+//
+//  useEffect(() => {
+//    const fetchBanner = async () => {
+//      try {
+//        const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!)
+//
+//        const { data, error } = await supabase
+//          .from("banners")
+//          .select("*")
+//          .eq("is_active", true)
+//          .order("order_index", { ascending: true })
+//          .limit(1)
+//          .single()
+//
+//        if (data) {
+//          setBanner(data)
+//        } else {
+//          setBanner({
+//            id: "default",
+//            title: "Welcome to Riayah Care",
+//            subtitle: "Compassionate Care & World Class Treatment",
+//            image_url:
+//              "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vecteezy_doctor-icon-virtual-screen-health-care-and-medical-on_12604205-inGwpDRPHTcYwpVYGm8H5Z37xv8z.jpg",
+//            cta_text: "Get Quote",
+//            cta_link: "/hospitals",
+//          })
+//        }
+//      } catch (error) {
+//        console.log("[v0] Error fetching banner, using default:", error)
+//        setBanner({
+//          id: "default",
+//          title: "Welcome to Riayah Care",
+//          subtitle: "Compassionate Care & World Class Treatment",
+//          image_url:
+//            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vecteezy_doctor-icon-virtual-screen-health-care-and-medical-on_12604205-inGwpDRPHTcYwpVYGm8H5Z37xv8z.jpg",
+//          cta_text: "Get Quote",
+//          cta_link: "/hospitals",
+//        })
+//      } finally {
+//        setLoading(false)
+//      }
+//    }
+//
+//    fetchBanner()
+//  }, [])
+//
+//  if (loading) {
+//    return <div className="h-screen bg-gradient-to-br from-green-100 to-emerald-50 animate-pulse" />
+//  }
+//
+//  if (!banner) {
+//    return null
+//  }
+//
+//  return (
+//    <div
+//      className="h-screen w-full relative flex items-center justify-center overflow-hidden"
+//      style={{
+//        backgroundImage: `url(${banner.image_url})`,
+//        backgroundSize: "cover",
+//        backgroundPosition: "center",
+//        backgroundAttachment: "fixed",
+//        backgroundColor: "#f0fdf4",
+//      }}
+//    >
+//      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20" />
+//
+//      {/* Content */}
+//      <div className="relative z-10 text-center text-white px-4 max-w-2xl">
+//        <h1 className="text-5xl md:text-6xl font-bold mb-4 text-balance drop-shadow-lg">{banner.title}</h1>
+//        {banner.subtitle && (
+//          <p className="text-xl md:text-2xl mb-8 text-gray-50 drop-shadow-md text-balance">{banner.subtitle}</p>
+//        )}
+//        <Link href={banner.cta_link}>
+//          <Button className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all">
+//            {banner.cta_text}
+//          </Button>
+//        </Link>
+//      </div>
+//    </div>
+//  )
+//}

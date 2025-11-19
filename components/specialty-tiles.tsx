@@ -30,12 +30,12 @@ function SpecialtyModal({ specialty, onClose }: SpecialtyModalProps) {
   if (!specialty) return null
 
   const handleNavigateToHospitals = () => {
-    router.push(`/hospitals?specialty=${encodeURIComponent(t(`${specialty.key}.name`))}`)
+    router.push(`/hospitals?specialty=${encodeURIComponent(specialty.key)}`)
     onClose()
   }
 
   const handleNavigateToDoctors = () => {
-    router.push(`/doctors?specialty=${encodeURIComponent(t(`${specialty.key}.name`))}`)
+    router.push(`/doctors?specialty=${encodeURIComponent(specialty.key)}`)
     onClose()
   }
 
@@ -286,6 +286,8 @@ export default function SpecialtyTiles() {
 //  const t= useTranslations("specialty_tiles")
 //
 //  if (!specialty) return null
+//
+//
 //
 //  const handleNavigateToHospitals = () => {
 //    router.push(`/hospitals?specialty=${encodeURIComponent(specialty.name)}`)
