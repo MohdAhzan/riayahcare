@@ -8,6 +8,7 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import HelpWidget from "@/components/help-widget"
 import SpecialtyTiles from "@/components/specialty-tiles"
+import PrivateConsultationSection from "@/components/private_consultation"
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
           <HospitalsSection />
           <DoctorsSection />
           <ProceduresSection />
+         <PrivateConsultationSection/>
           <TestimonialsSection />
           <Footer />
         </div>
