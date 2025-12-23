@@ -223,7 +223,7 @@ export default function PatientInquiryForm(): React.ReactElement {
 
       <input
         type="text"
-        placeholder="Patient Name"
+        placeholder="Name"
         value={formData.name}
         onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
         required
@@ -298,7 +298,7 @@ export default function PatientInquiryForm(): React.ReactElement {
       </select>
 
       <textarea
-        placeholder="Describe The Current Medical Problem .."
+        placeholder="Describe your concern"
         value={formData.medical_problem}
         onChange={(e) => setFormData((prev) => ({ ...prev, medical_problem: e.target.value }))}
         required

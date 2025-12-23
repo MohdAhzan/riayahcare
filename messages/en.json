@@ -62,6 +62,14 @@
       "liver_transplant": {
         "name": "Liver Transplant",
         "description": "Liver disease and transplant surgery"
+      },
+      "ayurveda": {
+        "name": "Ayurveda",
+        "description": "Traditional holistic medicine focused on natural healing and wellness"
+      },
+      "somethingelse": {
+        "name": "somethingELse",
+        "description": "Traditional holistic medicine focused on natural healing and wellness"
       }
     },
     "best":"Best",
