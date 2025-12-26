@@ -174,6 +174,62 @@ export default function SpecialtyTiles() {
     },
     {
       id: "6",
+      key: "pediatrics",
+      icon: (
+      <svg
+      className="w-12 h-12 mx-auto"
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {/* Definitions for the mask */}
+      <defs>
+        <mask id="baby-mask">
+          {/* 1. Fill the whole canvas with white (everything visible) */}
+          <rect x="0" y="0" width="64" height="64" fill="white" stroke="none" />
+          {/* 2. Draw a black circle where the baby head is (this area becomes hidden).
+               We make the radius slightly larger (13.5) to account for the stroke width,
+               ensuring a clean cut where the lines meet. */}
+          <circle cx="44" cy="34" r="13.5" fill="black" stroke="none" />
+        </mask>
+      </defs>
+
+      {/* Medical Cross - We apply the mask here so the baby head area is hidden */}
+      <path
+        mask="url(#baby-mask)"
+        d="M20 6 H28 A4 4 0 0 1 32 10 V20 H42 A4 4 0 0 1 46 24 V32 A4 4 0 0 1 42 36 H32 V46 A4 4 0 0 1 28 50 H20 A4 4 0 0 1 16 46 V36 H6 A4 4 0 0 1 2 32 V24 A4 4 0 0 1 6 20 H16 V10 A4 4 0 0 1 20 6 Z"
+      />
+
+      {/* Baby Face Group - Drawn normally on top */}
+      <g>
+        {/* Head outline */}
+        <circle cx="44" cy="34" r="12" />
+
+        {/* Ears */}
+        <path d="M32 34c-2-2-2 6 0 4" />
+        <path d="M56 34c2-2 2 6 0 4" />
+
+        {/* Eyes (Solid fill) */}
+        <circle cx="40" cy="33" r="1.5" fill="currentColor" stroke="none" />
+        <circle cx="48" cy="33" r="1.5" fill="currentColor" stroke="none" />
+
+        {/* Smile */}
+        <path d="M40 38c2 2 6 2 8 0" />
+
+        {/* Hair curl */}
+        <path d="M44 23c2-2 6 2 2 4" />
+      </g>
+    </svg>
+      ),
+      hospitals_count: 18,
+      doctors_count: 35,
+      avg_cost: 5800000,
+    },
+    {
+      id: "7",
       key: "gynecology",
       icon: (
         <svg className="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -185,7 +241,7 @@ export default function SpecialtyTiles() {
       avg_cost: 200000,
     },
     {
-      id: "7",
+      id: "8",
       key: "ivf_fertility",
       icon: (
         <svg className="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -198,7 +254,7 @@ export default function SpecialtyTiles() {
       avg_cost: 350000,
     },
     {
-      id: "8",
+      id: "9",
       key: "liver_transplant",
       icon: (
         <svg className="w-12 h-12 mx-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -211,50 +267,25 @@ export default function SpecialtyTiles() {
       avg_cost: 1800000,
     },
     {
-      id: "9",
+      id: "10",
       key: "ayurveda",
       icon: (
         <svg
-          className="w-12 h-12 mx-auto"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {/* Leaf outline */}
-          <path d="M6 14c0-5 6-8 12-8-1 6-4 12-9 12-2.5 0-3-2-3-4z" />
-
-          {/* Mid vein */}
-          <path d="M9 15c2-3 5-6 8-8" />
-        </svg>
-
-      ),
-      hospitals_count: 18,
-      doctors_count: 35,
-      avg_cost: 5800000,
-    },
-    {
-      id: "10",
-      key: "somethingelse",
-      icon: (
-        <svg
-          className="w-12 h-12 mx-auto"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          {/* Leaf outline */}
-          <path d="M6 14c0-5 6-8 12-8-1 6-4 12-9 12-2.5 0-3-2-3-4z" />
-
-          {/* Mid vein */}
-          <path d="M9 15c2-3 5-6 8-8" />
-        </svg>
-
+      className="w-12 h-12 mx-auto"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {/* Mortar Bowl */}
+      <path d="M5 10c0 4.418 3.582 8 8 8s8-3.582 8-8H5z" />
+      {/* Pestle */}
+      <path d="M10.5 5l2.5 5" />
+      {/* Small Leaf attached to bowl */}
+      <path d="M3 7c1 0 3 1 3 4 0-3 3-4 3-4s-2-1-3-1-3 1-3 1z" />
+    </svg>
       ),
       hospitals_count: 18,
       doctors_count: 35,

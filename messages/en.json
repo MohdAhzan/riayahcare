@@ -67,9 +67,9 @@
         "name": "Ayurveda",
         "description": "Traditional holistic medicine focused on natural healing and wellness"
       },
-      "somethingelse": {
-        "name": "somethingELse",
-        "description": "Traditional holistic medicine focused on natural healing and wellness"
+      "pediatrics": {
+        "name": "Pediatrics",
+        "description": "Compassionate medical care dedicated to the health, growth, and well-being of children"
       }
     },
     "best":"Best",
