@@ -1,3 +1,6 @@
+
+//components/patient-inquiry-form.tsx 
+
 "use client"
 
 import React, { useState, useEffect } from "react"
@@ -54,7 +57,7 @@ export default function PatientInquiryForm(): React.ReactElement {
     gender: "",
     specialty: "",
   })
-  
+
   const t= useTranslations("Form")
   const gender = useTranslations("Form.gender")
   const [loading, setLoading] = useState(false)
@@ -125,77 +128,204 @@ export default function PatientInquiryForm(): React.ReactElement {
       countryCode: countryData?.countryCode ? String(countryData.countryCode).toLowerCase() : prev.countryCode,
     }))
   }
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  if (loading) return;
+  setLoading(true);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      let uploadedFileURL = ""
+  try {
+    let uploadedFileURL = "";
 
-      if (formData.medical_report_url && typeof formData.medical_report_url !== "string") {
-        const file = formData.medical_report_url as File
-        const fileName = `${Date.now()}_${file.name}`
-        const { error: uploadError } = await supabase.storage
-          .from("medical_reports")
-          .upload(fileName, file)
+    // 1️⃣ Supabase File Upload
+    if (formData.medical_report_url && typeof formData.medical_report_url !== "string") {
+      const file = formData.medical_report_url as File;
+      const fileName = `${Date.now()}_${file.name}`;
 
-        if (uploadError) {
-          console.error("File upload error:", uploadError)
-          alert("failed uploading report")
-        } else {
-          const { data: publicUrlData } = supabase.storage
-          .from("medical_reports")
-          .getPublicUrl(fileName)
+      const { error: uploadError } = await supabase.storage
+        .from("medical_reports")
+        .upload(fileName, file);
 
-          uploadedFileURL = publicUrlData.publicUrl
-          alert("file uploaded successfully")
-        }
-      }
-
-      const phoneToSave = `${formData.phoneCountryCode}${formData.phone}`.replace(/\s+/g, "")
-      const { error } = await supabase.from("quote_requests").insert([
-        {
-          patient_name: formData.name,
-          country: formData.country,
-          state: formData.state,
-          city: formData.city,
-          phone: phoneToSave,
-          medical_problem: formData.medical_problem,
-          age: formData.age,
-          gender: formData.gender,
-          specialty: formData.specialty,
-          medical_report_url: uploadedFileURL || "",
-          created_at: new Date().toISOString(),
-        },
-      ])
-
-      if (error) {
-        console.error("[Form Submission Error]:", error)
-        alert("Error submitting form. Please try again.")
+      if (uploadError) {
+        console.error("File upload error:", uploadError);
+        // We continue even if upload fails, or you can throw error here
       } else {
-        setSubmitted(true)
-        setFormData({
-          name: "",
-          country: "",
-          countryCode: "in",
-          countryId: undefined,
-          state: "",
-          stateId: undefined,
-          city: "",
-          phone: "",
-          phoneCountryCode: "+91",
-          medical_problem: "",
-          medical_report_url: "",
-          age: "",
-          gender: "",
-          specialty: "",
-        })
-        setTimeout(() => setSubmitted(false), 5000)
+        const { data: publicUrlData } = supabase.storage
+          .from("medical_reports")
+          .getPublicUrl(fileName);
+        uploadedFileURL = publicUrlData.publicUrl;
       }
-    } finally {
-      setLoading(false)
     }
+
+    // 2️⃣ Prepare phone number
+    const phoneToSave = `${formData.phoneCountryCode}${formData.phone}`.replace(/\s+/g, "");
+
+    // 3️⃣ Save to Supabase DB (Primary Backup)
+    const { error: dbError } = await supabase.from("quote_requests").insert([
+      {
+        patient_name: formData.name,
+        country: formData.country,
+        state: formData.state,
+        city: formData.city,
+        phone: phoneToSave,
+        medical_problem: formData.medical_problem,
+        age: formData.age,
+        gender: formData.gender,
+        specialty: formData.specialty,
+        medical_report_url: uploadedFileURL || "",
+        created_at: new Date().toISOString(),
+      },
+    ]);
+
+    if (dbError) throw dbError;
+
+    // 4️⃣ Send to Zoho API Route (JSON Proxy)
+    const zohoResponse = await fetch("/api/zoho/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        patient_name: formData.name,
+        country: formData.country,
+        state: formData.state,
+        city: formData.city,
+        phone: phoneToSave,
+        medical_problem: formData.medical_problem,
+        age: formData.age,
+        gender: formData.gender,
+        specialty: formData.specialty,
+        medical_report_url: uploadedFileURL || "",
+      }),
+    });
+
+    if (!zohoResponse.ok) {
+      const errorData = await zohoResponse.json();
+      console.error("Zoho integration error:", errorData);
+      // Note: We don't alert "Error" here because Supabase save was already successful
+    }
+
+    // 5️⃣ Reset form UI on success
+    setSubmitted(true);
+    setFileName("");
+    setUploaded(false);
+    setFormData({
+      name: "",
+      country: "",
+      countryCode: "in",
+      countryId: undefined,
+      state: "",
+      stateId: undefined,
+      city: "",
+      phone: "",
+      phoneCountryCode: "+91",
+      medical_problem: "",
+      age: "",
+      gender: "",
+      specialty: "",
+      medical_report_url: "",
+    });
+    
+    setTimeout(() => setSubmitted(false), 5000);
+
+  } catch (err) {
+    console.error("[Form Submission Error]:", err);
+    alert("Error submitting form. Please check your connection and try again.");
+  } finally {
+    setLoading(false);
   }
+};
+  //const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //  e.preventDefault()
+  //  if (loading) return
+  //  setLoading(true)
+  //  try {
+  //    let uploadedFileURL = ""
+  //
+  //    if (formData.medical_report_url && typeof formData.medical_report_url !== "string") {
+  //      const file = formData.medical_report_url as File
+  //      const fileName = `${Date.now()}_${file.name}`
+  //      const { error: uploadError } = await supabase.storage
+  //        .from("medical_reports")
+  //        .upload(fileName, file)
+  //
+  //      if (uploadError) {
+  //        console.error("File upload error:", uploadError)
+  //        alert("failed uploading report")
+  //      } else {
+  //        const { data: publicUrlData } = supabase.storage
+  //        .from("medical_reports")
+  //        .getPublicUrl(fileName)
+  //
+  //        uploadedFileURL = publicUrlData.publicUrl
+  //        alert("file uploaded successfully")
+  //      }
+  //    }
+  //
+  //    const phoneToSave = `${formData.phoneCountryCode}${formData.phone}`.replace(/\s+/g, "")
+  //    const { error } = await supabase.from("quote_requests").insert([
+  //      {
+  //        patient_name: formData.name,
+  //        country: formData.country,
+  //        state: formData.state,
+  //        city: formData.city,
+  //        phone: phoneToSave,
+  //        medical_problem: formData.medical_problem,
+  //        age: formData.age,
+  //        gender: formData.gender,
+  //        specialty: formData.specialty,
+  //        medical_report_url: uploadedFileURL || "",
+  //        created_at: new Date().toISOString(),
+  //      },
+  //    ])
+  //
+  //    if (error) {
+  //      console.error("[Form Submission Error]:", error)
+  //      alert("Error submitting form. Please try again.")
+  //      return
+  //    }
+  //
+  //    // 🔔 Send data to Zoho (fire-and-forget)
+  //    fetch("/api/zohoForms/patient-inquiry", {
+  //      method: "POST",
+  //      headers: { "Content-Type": "application/json" },
+  //      body: JSON.stringify({
+  //        patient_name: formData.name,
+  //        country: formData.country,
+  //        state: formData.state,
+  //        city: formData.city,
+  //        phone: phoneToSave,
+  //        medical_problem: formData.medical_problem,
+  //        age: formData.age,
+  //        gender: formData.gender,
+  //        specialty: formData.specialty,
+  //        medical_report_url: uploadedFileURL || "",
+  //      }),
+  //    }).catch((err) => {
+  //        console.error("Zoho sync failed:", err)
+  //      })
+  //
+  //    // ✅ UI success (single source)
+  //    setSubmitted(true)
+  //    setFormData({
+  //      name: "",
+  //      country: "",
+  //      countryCode: "in",
+  //      countryId: undefined,
+  //      state: "",
+  //      stateId: undefined,
+  //      city: "",
+  //      phone: "",
+  //      phoneCountryCode: "+91",
+  //      medical_problem: "",
+  //      medical_report_url: "",
+  //      age: "",
+  //      gender: "",
+  //      specialty: "",
+  //    })
+  //    setTimeout(() => setSubmitted(false), 5000)
+  //
+  //  } finally {
+  //    setLoading(false)
+  //  }
+  //}
 
   // 🧩 File upload handler with visual feedback
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -218,7 +348,7 @@ export default function PatientInquiryForm(): React.ReactElement {
       className="w-full max-w-2xl mx-auto space-y-4 bg-white rounded-2xl p-8 shadow-lg"
     >
       <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
-      {t("title")}   
+        {t("title")}   
       </h2>
 
       <input
@@ -350,23 +480,23 @@ uploaded
       <div className="space-y-2">
         <label className="block font-semibold text-gray-700">Gender</label>
         <div className="flex gap-2 flex-wrap">
-          
+
           {
 
             [gender("m"), gender("f"),gender("o")].map((option) => (
-            <button
-              key={option}
-              type="button"
-              onClick={() => setFormData((prev) => ({ ...prev, gender: option }))}
-              className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
+              <button
+                key={option}
+                type="button"
+                onClick={() => setFormData((prev) => ({ ...prev, gender: option }))}
+                className={`px-4 py-2 rounded-full font-medium text-sm transition-all ${
 formData.gender === option
 ? "bg-gradient-to-r from-green-400 to-emerald-500 text-white shadow-md"
 : "border-2 border-green-300 text-green-700 hover:border-green-400 hover:bg-green-50"
 }`}
-            >
-              {option.charAt(0).toUpperCase() + option.slice(1)}
-            </button>
-          ))}
+              >
+                {option.charAt(0).toUpperCase() + option.slice(1)}
+              </button>
+            ))}
         </div>
       </div>
 
@@ -380,12 +510,12 @@ formData.gender === option
 
       {submitted && (
         <div className="p-4 bg-green-100 border border-green-400 rounded-lg text-green-800 font-semibold">
-         {t("response")} 
+          {t("response")} 
         </div>
       )}
 
       <p className="text-xs text-gray-600 text-center">
-          {t("terms")} 
+        {t("terms")} 
       </p>
     </form>
   )
