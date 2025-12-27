@@ -3,8 +3,8 @@
 import { useState } from "react"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
+import AdminDoctorsRoot from "@/components/admin/addDoctor/admin-doctors-root"
 import AdminHospitals from "@/components/admin/admin-hospitals"
-import AdminDoctors from "@/components/admin/admin-doctors"
 import AdminProcedures from "@/components/admin/admin-procedures"
 import AdminTestimonials from "@/components/admin/admin-testimonials"
 import AdminBanners from "@/components/admin/admin-banners"
@@ -40,7 +40,7 @@ export default function AdminPage() {
 
         {activeTab === "banners" && <AdminBanners />}
         {activeTab === "hospitals" && <AdminHospitals />}
-        {activeTab === "doctors" && <AdminDoctors />}
+        {activeTab === "doctors" && <AdminDoctorsRoot />}
         {activeTab === "procedures" && <AdminProcedures />}
         {activeTab === "testimonials" && <AdminTestimonials />}
       </div>
