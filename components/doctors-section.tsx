@@ -8,6 +8,7 @@ import Link from "next/link"
 interface Doctor {
   id: string
   name: string
+  slug:string
   specialty: string
   experience_years: number
   bio: string
@@ -43,7 +44,7 @@ export default function DoctorsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {doctors.map((doctor) => (
-            <Link key={doctor.id} href={`/doctors/${doctor.id}`}>
+            <Link key={doctor.id} href={`/doctors/${doctor.slug}`}>
               <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition cursor-pointer overflow-hidden">
                 <img
                   src={doctor.image_url || "/placeholder.svg"}

@@ -81,12 +81,12 @@ export default function ProceduresPage() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
-              Max Price: ${maxPrice.toLocaleString()}
+              Max Price:  ₹{maxPrice.toLocaleString()}
             </label>
             <input
               type="range"
               min="0"
-              max="50000"
+              max="5000000"
               step="1000"
               value={maxPrice}
               onChange={(e) => setMaxPrice(Number(e.target.value))}
@@ -98,7 +98,7 @@ export default function ProceduresPage() {
             <button
               onClick={() => {
                 setSelectedSpecialty("")
-                setMaxPrice(50000)
+                setMaxPrice(5000000)
               }}
               className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 rounded-lg transition"
             >
