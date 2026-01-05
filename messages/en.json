@@ -82,16 +82,146 @@
 
 
   "help_widget":{
-      "title":"Need Help?",
-      "tag":"Our healthcare experts are ready to assist you with any questions about treatments or doctors.",
-      "24/7":"Available 24/7 for your inquiries"
+    "title":"Need Help?",
+    "tag":"Our healthcare experts are ready to assist you with any questions about treatments or doctors.",
+    "24/7":"Available 24/7 for your inquiries"
   },
 
   "hospitals" : {
     "title":"Top Hospitals Worldwide",
-     "tag" : "Access world-class healthcare from top accredited hospitals",
+
+    "tag" : "Access world-class healthcare from top accredited hospitals",
     "view_all": "View All Hospitals"
+
+  },
+
+  "hospital_page": {
+    "loading": "Loading...",
+    "not_found": "Hospital not found.",
+
+    "established": "Established",
+
+    "about": "About",
+    "specialties": "Specialties",
+
+    "international_services": "International Patient Services",
+
+    "why_choose_prefix": "Why Choose",
+
+    "facilities": {
+      "title": "Facilities",
+
+      "sections": {
+        "comfort": {
+          "title": "Comfort During Stay",
+          "items": [
+            "TV in room",
+            "Private rooms",
+            "Free Wifi",
+            "Phone in Room",
+            "Mobility accessible rooms",
+            "Family accommodation",
+            "Laundry",
+            "Welcome",
+            "Safe in the room",
+            "Nursery / Nanny services",
+            "Dry cleaning",
+            "Personal assistance / Concierge",
+            "Religious facilities",
+            "Fitness",
+            "Spa and wellness",
+            "Café",
+            "Business centre services",
+            "Shop",
+            "Dedicated smoking areas",
+            "Beauty Salon",
+            "Special offer for group stays",
+            "Parking available"
+          ]
+        },
+
+        "money": {
+          "title": "Money Matters",
+          "items": [
+            "Health insurance coordination",
+            "Medical travel insurance",
+            "Foreign currency exchange",
+            "ATM",
+            "Credit Card",
+            "Debit Card",
+            "Netbanking"
+          ]
+        },
+
+        "food": {
+          "title": "Food",
+          "items": [
+            "Diet on Request",
+            "Restaurant",
+            "International Cuisine"
+          ]
+        },
+
+        "treatment": {
+          "title": "Treatment Related",
+          "items": [
+            "Medical records transfer",
+            "Online doctor consultation",
+            "Rehabilitation",
+            "Pharmacy",
+            "Document legalisation",
+            "Post operative followup"
+          ]
+        },
+
+        "language": {
+          "title": "Language",
+          "items": [
+            "Interpreter",
+            "Translation services"
+          ]
+        },
+
+        "transportation": {
+          "title": "Transportation",
+          "items": [
+            "Airport pickup",
+            "Local tourism options",
+            "Local transportation booking",
+            "Visa / Travel office",
+            "Car Hire",
+            "Private driver / Limousine services",
+            "Air ambulance"
+          ]
+        }
+      },
+
+      "view_more": "View More ▼",
+      "view_less": "View Less ▲"
+    },
+
+    "gallery": {
+      "title": "Gallery",
+      "view_all": "View all photos",
+      "view_less": "View less"
+    },
+
+    "cta": {
+      "title": "Need Assistance or a Quote?",
+      "subtitle": "Let us help you connect with",
+      "button": "Book Consultation"
+    },
+
+    "modal": {
+      "title": "Book Consultation",
+      "name": "Full Name",
+      "phone": "Phone No",
+      "message": "Your message or procedure interest",
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    }
   }
+
 
 }
 

@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl"
 
 interface Hospital {
   id: string
+  slug:string
   name: string
   city: string
   country: string
@@ -25,7 +26,7 @@ export default function HospitalsSection() {
   useEffect(() => {
     const fetchHospitals = async () => {
       const supabase = createClient()
-      const { data } = await supabase.from("hospitals").select("*").limit(6)
+      const { data } = await supabase.from("hospitals").select("*").limit(3)
       setHospitals(data || [])
       setLoading(false)
     }
@@ -45,7 +46,7 @@ export default function HospitalsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {hospitals.map((hospital) => (
-            <Link key={hospital.id} href={`/hospitals/${hospital.id}`}>
+            <Link key={hospital.id} href={`/hospitals/${hospital.slug}`}>
               <div className="bg-white rounded-lg shadow-md hover:shadow-xl transition cursor-pointer overflow-hidden">
                 <img
                   src={hospital.image_url || "/placeholder.svg"}

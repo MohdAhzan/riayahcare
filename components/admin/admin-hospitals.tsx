@@ -1,4 +1,5 @@
 
+// components/admin/admin-hospitals.tsx
 "use client"
 
 import { useEffect, useState } from "react"
@@ -63,9 +64,9 @@ export default function AdminHospitals() {
   const fetchHospitals = async () => {
     try {
       const { data, error } = await supabase.from("hospitals").select(`
-        *,
-        hospital_specialties (specialty)
-      `)
+*,
+hospital_specialties (specialty)
+`)
       if (error) throw error
       const merged = (data || []).map((h: any) => ({
         ...h,
@@ -108,24 +109,62 @@ export default function AdminHospitals() {
       const { specialties, ...hospitalData } = formData
 
       if (editingId) {
-        const { error } = await supabase.from("hospitals").update(hospitalData).eq("id", editingId)
-        if (error) throw error
+        const res = await fetch("/api/admin/hospitals", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id: editingId,
+            ...hospitalData,
+            facilities: formData.facilities,
+            intl_services: formData.intl_services,
+            specialties,
+          }),
+        })
 
-        await supabase.from("hospital_specialties").delete().eq("hospital_id", editingId)
-        await supabase.from("hospital_specialties").insert(
-          specialties.map((s) => ({ hospital_id: editingId, specialty: s }))
-        )
+        const result = await res.json()
+
+        if (!res.ok) {
+          console.error(result)
+          throw new Error("Update failed")
+        }
+
         alert("Hospital updated successfully!")
       } else {
-        const { data, error } = await supabase.from("hospitals").insert([hospitalData]).select("id")
-        if (error) throw error
-        if (!data || !data.length) throw new Error("Insert returned no data.")
 
-        const hospitalId = data[0].id
-        await supabase.from("hospital_specialties").insert(
-          specialties.map((s) => ({ hospital_id: hospitalId, specialty: s }))
-        )
+        // CALLING GOOGLE API FOR TRANSLATIONS WHEN ADDING DYNAMIC CONTENTS BY ADMIN
+
+        const res = await fetch("/api/admin/hospitals", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...hospitalData,
+            specialties,
+            facilities: formData.facilities,
+            intl_services: formData.intl_services,
+          }),
+        })
+
+        const result = await res.json()
+
+        if (!res.ok) {
+          console.error(result)
+          throw new Error("Failed to create hospital")
+        }
+
         alert("Hospital added successfully!")
+
+
+        //const { data, error } = await supabase.from("hospitals").insert([hospitalData]).select("id")
+        //if (error) throw error
+        //if (!data || !data.length) throw new Error("Insert returned no data.")
+        //
+        //const hospitalId = data[0].id
+        //await supabase.from("hospital_specialties").insert(
+        //  specialties.map((s) => ({ hospital_id: hospitalId, specialty: s }))
+        //)
+        //alert("Hospital added successfully!")
       }
 
       resetForm()
@@ -302,8 +341,8 @@ export default function AdminHospitals() {
                           <source src={url} type="video/mp4" />
                         </video>
                       ) : (
-                        <img key={idx} src={url} alt="Gallery item" className="rounded-lg w-full h-24 object-cover" />
-                      )
+                          <img key={idx} src={url} alt="Gallery item" className="rounded-lg w-full h-24 object-cover" />
+                        )
                     ))}
                   </div>
                 )}
