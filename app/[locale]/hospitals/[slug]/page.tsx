@@ -250,7 +250,7 @@ export default function HospitalDetailPage() {
                 onClick={() => setShowAllMobileItems(!showAllMobileItems)}
                 className="mt-4 text-sm text-emerald-600 font-medium hover:text-emerald-800 transition block"
               >
-                {showAllMobileItems ? "View Less ▲" : "View More ▼"}
+                {showAllMobileItems ? t("facilities.view_more")  : t("facilities.view_less")}
               </button>
             )}
           </div>
