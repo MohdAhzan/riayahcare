@@ -1,64 +1,76 @@
 import Link from "next/link"
+import { useTranslations } from "next-intl"
+import Image from "next/image"
 
 export default function Footer() {
+  const t = useTranslations("footer")
   return (
     <footer className="bg-green-900 text-gray-300 py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold">R</span>
-              </div>
-              <span className="font-bold text-white">Riayah Care</span>
+                <Link href="/" className="flex items-center gap-2">
+                  <Image
+                    src="/logo2.png"
+                    alt="Riayah Care Logo"
+                    width={60}
+                    height={70}
+                    className="rounded-lg shadow-lg"
+                    priority
+                  />
+                </Link>
+
+
+              <span className="font-bold text-white">{t("brand.name")}</span>
             </div>
-            <p className="text-sm">Connecting patients with world-class healthcare worldwide.</p>
+            <p className="text-sm">{t("brand.tagline")}</p>
           </div>
 
           <div>
-            <h4 className="font-bold text-white mb-4">Platform</h4>
+            <h4 className="font-bold text-white mb-4">{t("platform.title")}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/hospitals" className="hover:text-green-400 transition">
-                  Hospitals
+                  {t("platform.hospitals")}
                 </Link>
               </li>
               <li>
                 <Link href="/doctors" className="hover:text-green-400 transition">
-                  Doctors
+                  {t("platform.doctors")}
                 </Link>
               </li>
               <li>
                 <Link href="/procedures" className="hover:text-green-400 transition">
-                  Procedures
+                  {t("platform.procedures")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-white mb-4">Company</h4>
+            <h4 className="font-bold text-white mb-4">{t("company.title")}</h4>
             <ul className="space-y-2">
               <li>
                 <Link href="/about" className="hover:text-green-400 transition">
-                  About Us
+                  {t("company.about")}
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-green-400 transition">
-                  Contact
+                  {t("company.contact")}
                 </Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-green-400 transition">
-                  Blog
+                  {t("company.blog")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-white mb-4">Follow Us</h4>
+            <h4 className="font-bold text-white mb-4">{t("social.title")}</h4>
             <div className="flex gap-4">
               <a href="#" className="hover:text-green-400 transition">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -85,13 +97,13 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 pt-8 flex justify-between items-center flex-wrap gap-4">
-          <p className="text-sm">&copy; 2025 Riayah Care. All rights reserved.</p>
+          <p className="text-sm">&copy; {t("legal.copyright")}</p>
           <div className="flex gap-4">
             <Link href="/privacy" className="text-sm hover:text-green-400 transition">
-              Privacy Policy
+              {t("legal.privacy")}
             </Link>
             <Link href="/terms" className="text-sm hover:text-green-400 transition">
-              Terms of Service
+              {t("legal.terms")}
             </Link>
           </div>
         </div>

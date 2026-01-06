@@ -353,7 +353,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
       <input
         type="text"
-        placeholder="Name"
+        placeholder={t("placeholders.name")}
         value={formData.name}
         onChange={(e) => setFormData((prev) => ({ ...prev, name: e.target.value }))}
         required
@@ -365,7 +365,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="flex-1">
             <CountrySelect
-              placeHolder="Select Country"
+              placeHolder={t("placeholders.country")}
               onChange={onCountryChange}
               className="w-full [&>div]:border [&>div]:border-gray-300 [&>div]:rounded-lg [&>div]:px-2 [&>div]:py-1 hover:[&>div]:border-green-500 focus:[&>div]:ring-2 focus:[&>div]:ring-green-500"
             />
@@ -374,7 +374,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             <div className="flex-1">
               <StateSelect
                 countryid={Number(formData.countryId)}
-                placeHolder="Select State"
+                placeHolder={t("placeholders.state")}
                 onChange={onStateChange}
                 className="w-full [&>div]:border [&>div]:border-gray-300 [&>div]:rounded-lg [&>div]:px-2 [&>div]:py-1 hover:[&>div]:border-green-500 focus:[&>div]:ring-2 focus:[&>div]:ring-green-500"
               />
@@ -386,7 +386,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           <CitySelect
             countryid={Number(formData.countryId)}
             stateid={Number(formData.stateId)}
-            placeHolder="Select City"
+            placeHolder={t("placeholders.city")}
             onChange={onCityChange}
             className="w-full [&>div]:border [&>div]:border-gray-300 [&>div]:rounded-lg [&>div]:px-2 [&>div]:py-1 hover:[&>div]:border-green-500 focus:[&>div]:ring-2 focus:[&>div]:ring-green-500"
           />
@@ -399,7 +399,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           country={formData.countryCode}
           enableSearch
           disableDropdown={false}
-          placeholder="Enter your phone number"
+          placeholder={t("placeholders.phone")}
           value={`${formData.phoneCountryCode}${formData.phone}`.trim()}
           onChange={onPhoneChange}
           inputClass="!w-full !h-[48px] !pl-14 !pr-4 !py-3 !border !border-gray-300 !rounded-lg !focus:ring-2 !focus:ring-green-500 !focus:border-transparent !outline-none !text-gray-800"
@@ -419,7 +419,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         required
         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none transition appearance-none bg-white"
       >
-        <option value="">Select Medical Specialty</option>
+        <option value="">{t("placeholders.specialty")}</option>
         {SPECIALTIES.map((specialty) => (
           <option key={specialty} value={specialty}>
             {specialty}
@@ -428,7 +428,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       </select>
 
       <textarea
-        placeholder="Describe your concern"
+        placeholder={t("placeholders.medical_problem")}
         value={formData.medical_problem}
         onChange={(e) => setFormData((prev) => ({ ...prev, medical_problem: e.target.value }))}
         required
@@ -455,7 +455,7 @@ uploaded
                   <Upload className="text-gray-500" size={18} />
                 )}
             <span className="text-sm">
-              {fileName || "Upload your medical report (optional)"}
+              {fileName || t("placeholders.upload")}
             </span>
           </div>
         </label>
@@ -470,7 +470,7 @@ uploaded
 
       <input
         type="text"
-        placeholder="Age or Date of Birth"
+        placeholder={t("placeholders.age")}
         value={formData.age}
         onChange={(e) => setFormData((prev) => ({ ...prev, age: e.target.value }))}
         required
@@ -478,7 +478,7 @@ uploaded
       />
 
       <div className="space-y-2">
-        <label className="block font-semibold text-gray-700">Gender</label>
+        <label className="block font-semibold text-gray-700">{t("labels.gender")}</label>
         <div className="flex gap-2 flex-wrap">
 
           {
@@ -505,7 +505,7 @@ formData.gender === option
         disabled={loading}
         className="btn-glass w-full text-white text-lg py-4 font-bold disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? "Submitting..." : "Get FREE Quote"}
+        {loading ? t("buttons.submitting") : t("buttons.submit")}
       </button>
 
       {submitted && (

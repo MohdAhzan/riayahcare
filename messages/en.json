@@ -14,17 +14,39 @@
     "cta_text": "Contact us"
   },
 
+    "Form": {
+  "title": "Let Us Help You",
+  "terms": "By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.",
+  "response": "Thank you! Your quote request has been submitted. We'll contact you soon!",
 
-  "Form": {
-    "title": "Let Us Help You",
-    "terms":"By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.",
-    "response":"Thank you! Your quote request has been submitted. We'll contact you soon!",
-    "gender" : {
-      "m":"male",
-      "f":"female",
-      "o":"other"
-    }
+  "placeholders": {
+    "name": "Full Name",
+    "country": "Select Country",
+    "state": "Select State",
+    "city": "Select City",
+    "phone": "Enter your phone number",
+    "specialty": "Select Medical Specialty",
+    "medical_problem": "Describe your concern",
+    "upload": "Upload your medical report (optional)",
+    "age": "Age or Date of Birth"
   },
+
+  "buttons": {
+    "submit": "Get FREE Quote",
+    "submitting": "Submitting..."
+  },
+
+  "labels": {
+    "gender": "Gender"
+  },
+
+  "gender": {
+    "m": "male",
+    "f": "female",
+    "o": "other"
+  }
+},
+
 
 
   "specialty_tiles": {
@@ -219,9 +241,41 @@
       "message": "Your message or procedure interest",
       "submit": "Submit",
       "submitting": "Submitting..."
-    }
-  }
+   }
 
+  },
+
+  "footer": {
+    "brand": {
+      "name": "Riayah Care",
+      "tagline": "Connecting patients with world-class healthcare worldwide."
+    },
+
+    "platform": {
+      "title": "Platform",
+      "hospitals": "Hospitals",
+      "doctors": "Doctors",
+      "procedures": "Procedures"
+    },
+
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+
+    "social": {
+      "title": "Follow Us"
+    },
+
+    "legal": {
+      "copyright": "© 2025 Riayah Care. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+
+  }
 
 }
 
