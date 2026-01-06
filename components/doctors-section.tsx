@@ -66,11 +66,11 @@ export default function DoctorsSection() {
             </Link>
           ))}
         </div>
-
+  
         <div className="text-center mt-12">
           <Link
             href="/doctors"
-            className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition"
+            className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition"
           >
             View All Doctors
           </Link>

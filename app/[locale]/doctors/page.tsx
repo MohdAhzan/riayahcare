@@ -9,15 +9,10 @@ import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import Link from "next/link"
 import DesktopContactBar from "@/components/ui/desktop-contact-bar"
-import {
-  Star,
-  Briefcase,
-  Building2,
-  Filter,
-  ShieldCheck,
-  Headphones,
-  BadgeCheck,
-} from "lucide-react"
+import { Star, Briefcase, Building2, Filter, ShieldCheck, Headphones, BadgeCheck, } from "lucide-react"
+import HelpWidget from "@/components/help-widget"
+
+
 
 const supabase = createClient()
 
@@ -308,6 +303,8 @@ export default function DoctorsPage() {
           </div>
         </div>
       </section>
+  
+      <HelpWidget/>
 
       <Footer />
     </div>

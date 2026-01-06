@@ -14,38 +14,38 @@
     "cta_text": "Contact us"
   },
 
-    "Form": {
-  "title": "Let Us Help You",
-  "terms": "By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.",
-  "response": "Thank you! Your quote request has been submitted. We'll contact you soon!",
+  "Form": {
+    "title": "Let Us Help You",
+    "terms": "By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.",
+    "response": "Thank you! Your quote request has been submitted. We'll contact you soon!",
 
-  "placeholders": {
-    "name": "Full Name",
-    "country": "Select Country",
-    "state": "Select State",
-    "city": "Select City",
-    "phone": "Enter your phone number",
-    "specialty": "Select Medical Specialty",
-    "medical_problem": "Describe your concern",
-    "upload": "Upload your medical report (optional)",
-    "age": "Age or Date of Birth"
+    "placeholders": {
+      "name": "Full Name",
+      "country": "Select Country",
+      "state": "Select State",
+      "city": "Select City",
+      "phone": "Enter your phone number",
+      "specialty": "Select Medical Specialty",
+      "medical_problem": "Describe your concern",
+      "upload": "Upload your medical report (optional)",
+      "age": "Age or Date of Birth"
+    },
+
+    "buttons": {
+      "submit": "Get FREE Quote",
+      "submitting": "Submitting..."
+    },
+
+    "labels": {
+      "gender": "Gender"
+    },
+
+    "gender": {
+      "m": "male",
+      "f": "female",
+      "o": "other"
+    }
   },
-
-  "buttons": {
-    "submit": "Get FREE Quote",
-    "submitting": "Submitting..."
-  },
-
-  "labels": {
-    "gender": "Gender"
-  },
-
-  "gender": {
-    "m": "male",
-    "f": "female",
-    "o": "other"
-  }
-},
 
 
 
@@ -111,171 +111,202 @@
 
   "hospitals" : {
     "title":"Top Hospitals Worldwide",
-
     "tag" : "Access world-class healthcare from top accredited hospitals",
     "view_all": "View All Hospitals"
-
   },
 
-  "hospital_page": {
-    "loading": "Loading...",
-    "not_found": "Hospital not found.",
+  "all_hospital_page": {
+    "page_title": "Hospitals & Medical Centers",
+    "page_subtitle": "Explore world-class healthcare facilities from leading hospitals worldwide",
 
-    "established": "Established",
+    "filters": {
+      "country_label": "Filter by Country",
+      "country_all": "All Countries",
 
-    "about": "About",
-    "specialties": "Specialties",
+      "specialty_label": "Filter by Specialty",
+      "specialty_all": "All Specialties",
 
-    "international_services": "International Patient Services",
+      "reset": "Reset Filters"
+    },
 
-    "why_choose_prefix": "Why Choose",
+    "loading": "Loading hospitals...",
 
-    "facilities": {
-      "title": "Facilities",
+    "no_results": "No hospitals found matching your filters.",
 
-      "sections": {
-        "comfort": {
-          "title": "Comfort During Stay",
-          "items": [
-            "TV in room",
-            "Private rooms",
-            "Free Wifi",
-            "Phone in Room",
-            "Mobility accessible rooms",
-            "Family accommodation",
-            "Laundry",
-            "Welcome",
-            "Safe in the room",
-            "Nursery / Nanny services",
-            "Dry cleaning",
-            "Personal assistance / Concierge",
-            "Religious facilities",
-            "Fitness",
-            "Spa and wellness",
-            "Café",
-            "Business centre services",
-            "Shop",
-            "Dedicated smoking areas",
-            "Beauty Salon",
-            "Special offer for group stays",
-            "Parking available"
-          ]
-        },
+    "sidebar": {
+      "why_title": "Why Riayah Care?",
+      "why_items": [
+        "Doctor & hospital coordination",
+        "International patient support",
+        "Transparent premium care",
+        "Dedicated medical advisors"
+      ],
+      "help_title": "Need Help Choosing?",
+      "help_description": "Talk to our medical advisor for free guidance.",
+      "help_button": "Need Help?"
+    }
+  },
 
-        "money": {
-          "title": "Money Matters",
-          "items": [
-            "Health insurance coordination",
-            "Medical travel insurance",
-            "Foreign currency exchange",
-            "ATM",
-            "Credit Card",
-            "Debit Card",
-            "Netbanking"
-          ]
-        },
 
-        "food": {
-          "title": "Food",
-          "items": [
-            "Diet on Request",
-            "Restaurant",
-            "International Cuisine"
-          ]
-        },
+"hospital_page": {
+  "loading": "Loading...",
+  "not_found": "Hospital not found.",
 
-        "treatment": {
-          "title": "Treatment Related",
-          "items": [
-            "Medical records transfer",
-            "Online doctor consultation",
-            "Rehabilitation",
-            "Pharmacy",
-            "Document legalisation",
-            "Post operative followup"
-          ]
-        },
+  "established": "Established",
 
-        "language": {
-          "title": "Language",
-          "items": [
-            "Interpreter",
-            "Translation services"
-          ]
-        },
+  "about": "About",
+  "specialties": "Specialties",
 
-        "transportation": {
-          "title": "Transportation",
-          "items": [
-            "Airport pickup",
-            "Local tourism options",
-            "Local transportation booking",
-            "Visa / Travel office",
-            "Car Hire",
-            "Private driver / Limousine services",
-            "Air ambulance"
-          ]
-        }
+  "international_services": "International Patient Services",
+
+  "why_choose_prefix": "Why Choose",
+
+  "facilities": {
+    "title": "Facilities",
+
+    "sections": {
+      "comfort": {
+        "title": "Comfort During Stay",
+        "items": [
+          "TV in room",
+          "Private rooms",
+          "Free Wifi",
+          "Phone in Room",
+          "Mobility accessible rooms",
+          "Family accommodation",
+          "Laundry",
+          "Welcome",
+          "Safe in the room",
+          "Nursery / Nanny services",
+          "Dry cleaning",
+          "Personal assistance / Concierge",
+          "Religious facilities",
+          "Fitness",
+          "Spa and wellness",
+          "Café",
+          "Business centre services",
+          "Shop",
+          "Dedicated smoking areas",
+          "Beauty Salon",
+          "Special offer for group stays",
+          "Parking available"
+        ]
       },
 
-      "view_more": "View More ▼",
-      "view_less": "View Less ▲"
+      "money": {
+        "title": "Money Matters",
+        "items": [
+          "Health insurance coordination",
+          "Medical travel insurance",
+          "Foreign currency exchange",
+          "ATM",
+          "Credit Card",
+          "Debit Card",
+          "Netbanking"
+        ]
+      },
+
+      "food": {
+        "title": "Food",
+        "items": [
+          "Diet on Request",
+          "Restaurant",
+          "International Cuisine"
+        ]
+      },
+
+      "treatment": {
+        "title": "Treatment Related",
+        "items": [
+          "Medical records transfer",
+          "Online doctor consultation",
+          "Rehabilitation",
+          "Pharmacy",
+          "Document legalisation",
+          "Post operative followup"
+        ]
+      },
+
+      "language": {
+        "title": "Language",
+        "items": [
+          "Interpreter",
+          "Translation services"
+        ]
+      },
+
+      "transportation": {
+        "title": "Transportation",
+        "items": [
+          "Airport pickup",
+          "Local tourism options",
+          "Local transportation booking",
+          "Visa / Travel office",
+          "Car Hire",
+          "Private driver / Limousine services",
+          "Air ambulance"
+        ]
+      }
     },
 
-    "gallery": {
-      "title": "Gallery",
-      "view_all": "View all photos",
-      "view_less": "View less"
-    },
-
-    "cta": {
-      "title": "Need Assistance or a Quote?",
-      "subtitle": "Let us help you connect with",
-      "button": "Book Consultation"
-    },
-
-    "modal": {
-      "title": "Book Consultation",
-      "name": "Full Name",
-      "phone": "Phone No",
-      "message": "Your message or procedure interest",
-      "submit": "Submit",
-      "submitting": "Submitting..."
-   }
-
+    "view_more": "View More ▼",
+    "view_less": "View Less ▲"
   },
 
-  "footer": {
-    "brand": {
-      "name": "Riayah Care",
-      "tagline": "Connecting patients with world-class healthcare worldwide."
-    },
+  "gallery": {
+    "title": "Gallery",
+    "view_all": "View all photos",
+    "view_less": "View less"
+  },
 
-    "platform": {
-      "title": "Platform",
-      "hospitals": "Hospitals",
-      "doctors": "Doctors",
-      "procedures": "Procedures"
-    },
+  "cta": {
+    "title": "Need Assistance or a Quote?",
+    "subtitle": "Let us help you connect with",
+    "button": "Book Consultation"
+  },
 
-    "company": {
-      "title": "Company",
-      "about": "About Us",
-      "contact": "Contact",
-      "blog": "Blog"
-    },
-
-    "social": {
-      "title": "Follow Us"
-    },
-
-    "legal": {
-      "copyright": "© 2025 Riayah Care. All rights reserved.",
-      "privacy": "Privacy Policy",
-      "terms": "Terms of Service"
-    }
-
+  "modal": {
+    "title": "Book Consultation",
+    "name": "Full Name",
+    "phone": "Phone No",
+    "message": "Your message or procedure interest",
+    "submit": "Submit",
+    "submitting": "Submitting..."
   }
+
+},
+
+"footer": {
+  "brand": {
+    "name": "Riayah Care",
+    "tagline": "Connecting patients with world-class healthcare worldwide."
+  },
+
+  "platform": {
+    "title": "Platform",
+    "hospitals": "Hospitals",
+    "doctors": "Doctors",
+    "procedures": "Procedures"
+  },
+
+  "company": {
+    "title": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+
+  "social": {
+    "title": "Follow Us"
+  },
+
+  "legal": {
+    "copyright": "© 2025 Riayah Care. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  }
+
+}
 
 }
 
