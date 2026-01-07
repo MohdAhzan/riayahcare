@@ -1,3 +1,6 @@
+
+//app/[locale]/page.tsx
+
 import LandingBanner from "@/components/landing-banner"
 import SearchForm from "@/components/search-form"
 import HospitalsSection from "@/components/hospitals-section"
@@ -9,6 +12,7 @@ import Footer from "@/components/footer"
 import HelpWidget from "@/components/help-widget"
 import SpecialtyTiles from "@/components/specialty-tiles"
 import PrivateConsultationSection from "@/components/private_consultation"
+import FAQs from "@/components/faqs"
 
 export default function Home() {
   return (
@@ -30,6 +34,7 @@ export default function Home() {
           <ProceduresSection />
          <PrivateConsultationSection/>
           <TestimonialsSection />
+          <FAQs section="landing"/>
           <Footer />
         </div>
       </div>

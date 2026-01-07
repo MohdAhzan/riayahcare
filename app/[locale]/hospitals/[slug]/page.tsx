@@ -11,6 +11,7 @@ import { createClient } from "@/lib/supabase/client"
 import VideoPlaceholder from "@/components/videoplaceholder"
 import { dbT } from "@/i18n/db-translate" 
 import { useTranslations } from "next-intl"
+import FAQs from "@/components/faqs"
 
 
 interface Hospital {
@@ -529,6 +530,7 @@ active
       >
         📞
       </button>
+      <FAQs section="hospital_detail" entityId= {hospital.id} />
       <Footer />
 
       {/* Modal */}
