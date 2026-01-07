@@ -15,6 +15,7 @@ import {
   Activity,
   Stethoscope,
 } from "lucide-react"
+import FAQs from "@/components/faqs"
 
 const supabase = createClient()
 
@@ -305,6 +306,7 @@ export default function DoctorDetailPage() {
         </aside>
       </section>
   
+            <FAQs section="doctor_detail" entityId={doctor.id} />
       <HelpWidget/>
       <Footer />
     </div>

@@ -341,14 +341,14 @@ export default function HospitalDetailPage() {
           <div className="mt-10">
             <h2 className="text-2xl font-semibold mb-3">{t("specialties")}</h2>
             <div className="flex flex-wrap gap-2">
-              {hospital.specialties.map((s) => (
-                <span
-                  key={s}
-                  className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium"
-                >
-                  {s}
-                </span>
-              ))}
+              {hospital.specialties.map((s, i) => (
+        <span
+          key={`${s}-${i}`}
+          className="bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-sm font-medium"
+        >
+          {s}
+        </span>
+      ))}
             </div>
           </div>
         )}

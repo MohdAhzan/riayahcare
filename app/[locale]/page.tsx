@@ -31,8 +31,8 @@ export default function Home() {
           <SpecialtyTiles />
           <HospitalsSection />
           <DoctorsSection />
-          <ProceduresSection />
          <PrivateConsultationSection/>
+          <ProceduresSection />
           <TestimonialsSection />
           <FAQs section="landing"/>
           <Footer />

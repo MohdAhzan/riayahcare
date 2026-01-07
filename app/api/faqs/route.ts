@@ -72,11 +72,19 @@ export async function GET(req: NextRequest) {
 }
 
 /* ================================ POST ================================ */
-
+  
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
-    const { section, question, answer } = body
+
+    const {
+      section,
+      entity_type,
+      entity_id,
+      question,
+      answer,
+      position,
+    } = body
 
     if (!section || !question || !answer) {
       return NextResponse.json(
@@ -85,7 +93,6 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    // 🔁 Auto translate once
     const translated = await translateValuesToArabic({
       question,
       answer,
@@ -95,6 +102,8 @@ export async function POST(req: NextRequest) {
 
     const { error } = await supabase.from("faqs").insert({
       section,
+      entity_type: entity_type ?? null,
+      entity_id: entity_id ?? null,
       question,
       answer,
       translations: {
@@ -103,7 +112,7 @@ export async function POST(req: NextRequest) {
           answer: translated.answer,
         },
       },
-      position: 0,
+      position: position ?? 0,   // ✅ respect frontend
       is_active: true,
     })
 
@@ -125,12 +134,21 @@ export async function POST(req: NextRequest) {
   }
 }
 
+
 /* ================================ PUT ================================ */
 
 export async function PUT(req: NextRequest) {
   try {
     const body = await req.json()
-    const { id, section, question, answer } = body
+
+    const {
+      id,
+      section,
+      entity_type,
+      entity_id,
+      question,
+      answer,
+    } = body
 
     if (!id || !section || !question || !answer) {
       return NextResponse.json(
@@ -139,7 +157,6 @@ export async function PUT(req: NextRequest) {
       )
     }
 
-    // 🔁 Re-translate on update
     const translated = await translateValuesToArabic({
       question,
       answer,
@@ -151,6 +168,8 @@ export async function PUT(req: NextRequest) {
       .from("faqs")
       .update({
         section,
+        entity_type: entity_type ?? null,
+        entity_id: entity_id ?? null,
         question,
         answer,
         translations: {

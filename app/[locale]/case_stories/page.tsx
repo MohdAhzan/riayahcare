@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import Link from "next/link"
+import FAQs from "@/components/faqs"
 
 interface CaseStories{
   id: string
@@ -128,7 +129,7 @@ export default function CaseStoriesPage() {
           </div>
         )}
       </div>
-
+      <FAQs section="testimonials" />
       <Footer />
     </div>
   )

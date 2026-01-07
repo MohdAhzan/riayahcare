@@ -148,165 +148,172 @@
   },
 
 
-"hospital_page": {
-  "loading": "Loading...",
-  "not_found": "Hospital not found.",
+  "hospital_page": {
+    "loading": "Loading...",
+    "not_found": "Hospital not found.",
 
-  "established": "Established",
+    "established": "Established",
 
-  "about": "About",
-  "specialties": "Specialties",
+    "about": "About",
+    "specialties": "Specialties",
 
-  "international_services": "International Patient Services",
+    "international_services": "International Patient Services",
 
-  "why_choose_prefix": "Why Choose",
+    "why_choose_prefix": "Why Choose",
 
-  "facilities": {
-    "title": "Facilities",
+    "facilities": {
+      "title": "Facilities",
 
-    "sections": {
-      "comfort": {
-        "title": "Comfort During Stay",
-        "items": [
-          "TV in room",
-          "Private rooms",
-          "Free Wifi",
-          "Phone in Room",
-          "Mobility accessible rooms",
-          "Family accommodation",
-          "Laundry",
-          "Welcome",
-          "Safe in the room",
-          "Nursery / Nanny services",
-          "Dry cleaning",
-          "Personal assistance / Concierge",
-          "Religious facilities",
-          "Fitness",
-          "Spa and wellness",
-          "Café",
-          "Business centre services",
-          "Shop",
-          "Dedicated smoking areas",
-          "Beauty Salon",
-          "Special offer for group stays",
-          "Parking available"
-        ]
+      "sections": {
+        "comfort": {
+          "title": "Comfort During Stay",
+          "items": [
+            "TV in room",
+            "Private rooms",
+            "Free Wifi",
+            "Phone in Room",
+            "Mobility accessible rooms",
+            "Family accommodation",
+            "Laundry",
+            "Welcome",
+            "Safe in the room",
+            "Nursery / Nanny services",
+            "Dry cleaning",
+            "Personal assistance / Concierge",
+            "Religious facilities",
+            "Fitness",
+            "Spa and wellness",
+            "Café",
+            "Business centre services",
+            "Shop",
+            "Dedicated smoking areas",
+            "Beauty Salon",
+            "Special offer for group stays",
+            "Parking available"
+          ]
+        },
+
+        "money": {
+          "title": "Money Matters",
+          "items": [
+            "Health insurance coordination",
+            "Medical travel insurance",
+            "Foreign currency exchange",
+            "ATM",
+            "Credit Card",
+            "Debit Card",
+            "Netbanking"
+          ]
+        },
+
+        "food": {
+          "title": "Food",
+          "items": [
+            "Diet on Request",
+            "Restaurant",
+            "International Cuisine"
+          ]
+        },
+
+        "treatment": {
+          "title": "Treatment Related",
+          "items": [
+            "Medical records transfer",
+            "Online doctor consultation",
+            "Rehabilitation",
+            "Pharmacy",
+            "Document legalisation",
+            "Post operative followup"
+          ]
+        },
+
+        "language": {
+          "title": "Language",
+          "items": [
+            "Interpreter",
+            "Translation services"
+          ]
+        },
+
+        "transportation": {
+          "title": "Transportation",
+          "items": [
+            "Airport pickup",
+            "Local tourism options",
+            "Local transportation booking",
+            "Visa / Travel office",
+            "Car Hire",
+            "Private driver / Limousine services",
+            "Air ambulance"
+          ]
+        }
       },
 
-      "money": {
-        "title": "Money Matters",
-        "items": [
-          "Health insurance coordination",
-          "Medical travel insurance",
-          "Foreign currency exchange",
-          "ATM",
-          "Credit Card",
-          "Debit Card",
-          "Netbanking"
-        ]
-      },
-
-      "food": {
-        "title": "Food",
-        "items": [
-          "Diet on Request",
-          "Restaurant",
-          "International Cuisine"
-        ]
-      },
-
-      "treatment": {
-        "title": "Treatment Related",
-        "items": [
-          "Medical records transfer",
-          "Online doctor consultation",
-          "Rehabilitation",
-          "Pharmacy",
-          "Document legalisation",
-          "Post operative followup"
-        ]
-      },
-
-      "language": {
-        "title": "Language",
-        "items": [
-          "Interpreter",
-          "Translation services"
-        ]
-      },
-
-      "transportation": {
-        "title": "Transportation",
-        "items": [
-          "Airport pickup",
-          "Local tourism options",
-          "Local transportation booking",
-          "Visa / Travel office",
-          "Car Hire",
-          "Private driver / Limousine services",
-          "Air ambulance"
-        ]
-      }
+      "view_more": "View More ▼",
+      "view_less": "View Less ▲"
     },
 
-    "view_more": "View More ▼",
-    "view_less": "View Less ▲"
+    "gallery": {
+      "title": "Gallery",
+      "view_all": "View all photos",
+      "view_less": "View less"
+    },
+
+    "cta": {
+      "title": "Need Assistance or a Quote?",
+      "subtitle": "Let us help you connect with",
+      "button": "Book Consultation"
+    },
+
+    "modal": {
+      "title": "Book Consultation",
+      "name": "Full Name",
+      "phone": "Phone No",
+      "message": "Your message or procedure interest",
+      "submit": "Submit",
+      "submitting": "Submitting..."
+    }
+
   },
 
-  "gallery": {
-    "title": "Gallery",
-    "view_all": "View all photos",
-    "view_less": "View less"
-  },
+  "footer": {
+    "brand": {
+      "name": "Riayah Care",
+      "tagline": "Connecting patients with world-class healthcare worldwide."
+    },
 
-  "cta": {
-    "title": "Need Assistance or a Quote?",
-    "subtitle": "Let us help you connect with",
-    "button": "Book Consultation"
-  },
+    "platform": {
+      "title": "Platform",
+      "hospitals": "Hospitals",
+      "doctors": "Doctors",
+      "procedures": "Procedures"
+    },
 
-  "modal": {
-    "title": "Book Consultation",
-    "name": "Full Name",
-    "phone": "Phone No",
-    "message": "Your message or procedure interest",
-    "submit": "Submit",
-    "submitting": "Submitting..."
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+
+    "social": {
+      "title": "Follow Us"
+    },
+
+    "legal": {
+      "copyright": "© 2025 Riayah Care. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+
+
+
+
+  },
+  "faqs": {
+    "title": "Frequently Asked Questions (FAQ's)",
+    "subtitle": "Clear answers to common questions"
   }
-
-},
-
-"footer": {
-  "brand": {
-    "name": "Riayah Care",
-    "tagline": "Connecting patients with world-class healthcare worldwide."
-  },
-
-  "platform": {
-    "title": "Platform",
-    "hospitals": "Hospitals",
-    "doctors": "Doctors",
-    "procedures": "Procedures"
-  },
-
-  "company": {
-    "title": "Company",
-    "about": "About Us",
-    "contact": "Contact",
-    "blog": "Blog"
-  },
-
-  "social": {
-    "title": "Follow Us"
-  },
-
-  "legal": {
-    "copyright": "© 2025 Riayah Care. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Service"
-  }
-
-}
 
 }
 

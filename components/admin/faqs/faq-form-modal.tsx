@@ -101,30 +101,61 @@ export default function FAQFormModal({
      Save FAQ
   -------------------------------- */
   const saveFAQ = async () => {
-    setSaving(true)
-
-    const res = await fetch("/api/faqs", {
-      method: faq?.id ? "PUT" : "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        id: faq?.id,
-        section,
-        entity_type: isDynamic ? entityType : null,
-        entity_id: isDynamic ? entityId : null,
-        question,
-        answer,
-      }),
-    })
-
-    setSaving(false)
-
-    if (res.ok) {
-      onSaved()
-      onClose()
-    } else {
-      alert("Failed to save FAQ")
-    }
+  if (isDynamic && !entityId) {
+    alert(`Please select a ${entityType}`)
+    return
   }
+
+  setSaving(true)
+
+  const res = await fetch("/api/faqs", {
+    method: faq?.id ? "PUT" : "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      id: faq?.id,
+      section,
+      entity_type: isDynamic ? entityType : null,
+      entity_id: isDynamic ? entityId : null,
+      question,
+      answer,
+    }),
+  })
+
+  setSaving(false)
+
+  if (res.ok) {
+    onSaved()
+    onClose()
+  } else {
+    alert("Failed to save FAQ")
+  }
+}
+
+  //const saveFAQ = async () => {
+  //  setSaving(true)
+  //
+  //  const res = await fetch("/api/faqs", {
+  //    method: faq?.id ? "PUT" : "POST",
+  //    headers: { "Content-Type": "application/json" },
+  //    body: JSON.stringify({
+  //      id: faq?.id,
+  //      section,
+  //      entity_type: isDynamic ? entityType : null,
+  //      entity_id: isDynamic ? entityId : null,
+  //      question,
+  //      answer,
+  //    }),
+  //  })
+  //
+  //  setSaving(false)
+  //
+  //  if (res.ok) {
+  //    onSaved()
+  //    onClose()
+  //  } else {
+  //    alert("Failed to save FAQ")
+  //  }
+  //}
 
   return (
     //<div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
