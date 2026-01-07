@@ -22,3 +22,9 @@ export async function hubspotFetch(
   return res.json();
 }
 
+export function parseAge(age: string | null) {
+  if (!age) return null
+  const n = parseInt(age, 10)
+  return Number.isNaN(n) ? null : n
+}
+
