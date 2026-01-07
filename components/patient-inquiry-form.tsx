@@ -3,7 +3,7 @@
 
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "react-country-state-city/dist/react-country-state-city.css"
 import "react-phone-input-2/lib/style.css"
 import { CountrySelect, StateSelect, CitySelect } from "react-country-state-city"
@@ -178,29 +178,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
     if (dbError) throw dbError;
 
-    // 4️⃣ Send to Zoho API Route (JSON Proxy)
-    const zohoResponse = await fetch("/api/zoho/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        patient_name: formData.name,
-        country: formData.country,
-        state: formData.state,
-        city: formData.city,
-        phone: phoneToSave,
-        medical_problem: formData.medical_problem,
-        age: formData.age,
-        gender: formData.gender,
-        specialty: formData.specialty,
-        medical_report_url: uploadedFileURL || "",
-      }),
-    });
-
-    if (!zohoResponse.ok) {
-      const errorData = await zohoResponse.json();
-      console.error("Zoho integration error:", errorData);
-      // Note: We don't alert "Error" here because Supabase save was already successful
-    }
 
     // 5️⃣ Reset form UI on success
     setSubmitted(true);
@@ -232,100 +209,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     setLoading(false);
   }
 };
-  //const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //  e.preventDefault()
-  //  if (loading) return
-  //  setLoading(true)
-  //  try {
-  //    let uploadedFileURL = ""
-  //
-  //    if (formData.medical_report_url && typeof formData.medical_report_url !== "string") {
-  //      const file = formData.medical_report_url as File
-  //      const fileName = `${Date.now()}_${file.name}`
-  //      const { error: uploadError } = await supabase.storage
-  //        .from("medical_reports")
-  //        .upload(fileName, file)
-  //
-  //      if (uploadError) {
-  //        console.error("File upload error:", uploadError)
-  //        alert("failed uploading report")
-  //      } else {
-  //        const { data: publicUrlData } = supabase.storage
-  //        .from("medical_reports")
-  //        .getPublicUrl(fileName)
-  //
-  //        uploadedFileURL = publicUrlData.publicUrl
-  //        alert("file uploaded successfully")
-  //      }
-  //    }
-  //
-  //    const phoneToSave = `${formData.phoneCountryCode}${formData.phone}`.replace(/\s+/g, "")
-  //    const { error } = await supabase.from("quote_requests").insert([
-  //      {
-  //        patient_name: formData.name,
-  //        country: formData.country,
-  //        state: formData.state,
-  //        city: formData.city,
-  //        phone: phoneToSave,
-  //        medical_problem: formData.medical_problem,
-  //        age: formData.age,
-  //        gender: formData.gender,
-  //        specialty: formData.specialty,
-  //        medical_report_url: uploadedFileURL || "",
-  //        created_at: new Date().toISOString(),
-  //      },
-  //    ])
-  //
-  //    if (error) {
-  //      console.error("[Form Submission Error]:", error)
-  //      alert("Error submitting form. Please try again.")
-  //      return
-  //    }
-  //
-  //    // 🔔 Send data to Zoho (fire-and-forget)
-  //    fetch("/api/zohoForms/patient-inquiry", {
-  //      method: "POST",
-  //      headers: { "Content-Type": "application/json" },
-  //      body: JSON.stringify({
-  //        patient_name: formData.name,
-  //        country: formData.country,
-  //        state: formData.state,
-  //        city: formData.city,
-  //        phone: phoneToSave,
-  //        medical_problem: formData.medical_problem,
-  //        age: formData.age,
-  //        gender: formData.gender,
-  //        specialty: formData.specialty,
-  //        medical_report_url: uploadedFileURL || "",
-  //      }),
-  //    }).catch((err) => {
-  //        console.error("Zoho sync failed:", err)
-  //      })
-  //
-  //    // ✅ UI success (single source)
-  //    setSubmitted(true)
-  //    setFormData({
-  //      name: "",
-  //      country: "",
-  //      countryCode: "in",
-  //      countryId: undefined,
-  //      state: "",
-  //      stateId: undefined,
-  //      city: "",
-  //      phone: "",
-  //      phoneCountryCode: "+91",
-  //      medical_problem: "",
-  //      medical_report_url: "",
-  //      age: "",
-  //      gender: "",
-  //      specialty: "",
-  //    })
-  //    setTimeout(() => setSubmitted(false), 5000)
-  //
-  //  } finally {
-  //    setLoading(false)
-  //  }
-  //}
 
   // 🧩 File upload handler with visual feedback
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
