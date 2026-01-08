@@ -17,7 +17,7 @@ export async function POST(req: Request) {
           phone: record.phone,
           //city: record.city || "",
           //state: record.state || "",
-          country: record.country, 
+          //country: record.country, 
           medical_specialty: record.specialty,
 
           medical_problem: record.medical_problem,
