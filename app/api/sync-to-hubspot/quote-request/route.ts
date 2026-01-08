@@ -18,14 +18,12 @@ export async function POST(req: Request) {
           //city: record.city || "",
           //state: record.state || "",
           //country: record.country,
-
           //medical_specialty: record.specialty,
           //medical_problem: record.medical_problem,
           //patient_age: parseAge(record.age),
           //patient_gender: record.gender,
           //medical_report_url: record.medical_report_url || "",
-
-          lead_source: "RiayahCare Website",
+          //lead_source: "RiayahCare Website",
         },
       }
     );
