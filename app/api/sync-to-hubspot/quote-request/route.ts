@@ -15,14 +15,15 @@ export async function POST(req: Request) {
         properties: {
           firstname: record.patient_name,
           phone: record.phone,
-          //city: record.city || "",
-          //state: record.state || "",
-          //country: record.country,
-          //medical_specialty: record.specialty,
-          //medical_problem: record.medical_problem,
-          //patient_age: parseAge(record.age),
-          //patient_gender: record.gender,
-          //medical_report_url: record.medical_report_url || "",
+          city: record.city || "",
+          state: record.state || "",
+          country: record.country, 
+          medical_specialty: record.specialty,
+
+          medical_problem: record.medical_problem,
+          patient_age: record.age,
+          patient_gender: record.gender,
+          medical_report_url: record.medical_report_url || "",
           //lead_source: "RiayahCare Website",
         },
       }
