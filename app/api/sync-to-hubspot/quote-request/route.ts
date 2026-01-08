@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { hubspotFetch, parseAge } from "@/lib/hubspot/helper";
+import { hubspotFetch  } from "@/lib/hubspot/helper";
 
 export async function POST(req: Request) {
   try {
@@ -15,9 +15,9 @@ export async function POST(req: Request) {
         properties: {
           firstname: record.patient_name,
           phone: record.phone,
-          city: record.city || "",
-          state: record.state || "",
-          country: record.country,
+          //city: record.city || "",
+          //state: record.state || "",
+          //country: record.country,
 
           //medical_specialty: record.specialty,
           //medical_problem: record.medical_problem,
