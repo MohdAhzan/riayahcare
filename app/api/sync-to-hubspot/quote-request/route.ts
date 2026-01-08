@@ -15,8 +15,8 @@ export async function POST(req: Request) {
         properties: {
           firstname: record.patient_name,
           phone: record.phone,
-          city: record.city || "",
-          state: record.state || "",
+          //city: record.city || "",
+          //state: record.state || "",
           country: record.country, 
           medical_specialty: record.specialty,
 
