@@ -22,7 +22,7 @@ export async function POST(req: Request) {
 
           medical_problem: record.medical_problem,
           patient_age: record.age,
-          patient_gender: record.gender,
+          gender: record.gender,
           medical_report_url: record.medical_report_url || "",
           //lead_source: "RiayahCare Website",
         },
