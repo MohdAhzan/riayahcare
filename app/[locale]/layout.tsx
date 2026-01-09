@@ -1,3 +1,5 @@
+//app/[locale]/layout.tsx
+
 import { NextIntlClientProvider } from "next-intl";
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
@@ -39,52 +41,3 @@ export default async function LocaleLayout({ children, params }: Props) {
   );
 }
 
-//import type React from "react"
-//import type { Metadata } from "next"
-//import { Geist, Geist_Mono } from "next/font/google"
-//import "../globals.css"
-//import { NextIntlClientProvider } from "next-intl"
-//import { notFound } from "next/navigation"
-//
-//const geist = Geist({ subsets: ["latin"] })
-//const geistMono = Geist_Mono({ subsets: ["latin"] })
-//
-//export const metadata: Metadata = {
-//  title: "Riayah Care - Compassionate Healthcare Solutions",
-//  description: "Compassionate Care & World Class Treatment at Top Hospitals in India",
-//}
-//
-//// pre-generate for language locales (does this way cuz to make site SEO-friendly)
-//
-//export function generateStaticParams(){
-//  return [ {locale:"en"},{locale:"ar"}]
-//}
-//
-//type Props = {
-//  children :React.ReactNode;
-//  params:  Promise<{locale: string}>;
-//}
-//
-//export default async function RootLayout({children:params}:Props) {
-//
-//  const {locale} = await params;
-//
-//  let messages
-//
-//  try{
-//    messages = (await import(`../../messages/en.json`)).default
-//  }catch{
-//    console.log("ITS HEREEEEE")
-//    notFound()
-//  }
-//
-//  return (
-//    <html lang={locale}>
-//      <body className={`${geist.className}${geistMono.className}`}>
-//        <NextIntlClientProvider locale={locale} messages={messages}>
-//        {locale.children}
-//        </NextIntlClientProvider>
-//      </body>
-//    </html>
-//  )
-//}
