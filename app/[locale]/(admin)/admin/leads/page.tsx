@@ -11,11 +11,11 @@ export default async function LeadsPage({
     searchParams: Promise<{
       page?: string
       status?: string
-      searchLeads?: string
+      q?: string
 
     }>
   }) {
-  const { page = "1", status,  searchLeads } = await searchParams
+  const { page = "1", status,  q:searchLeads } = await searchParams
   const pageNum = Number(page)
   const pageSize = 20
 
