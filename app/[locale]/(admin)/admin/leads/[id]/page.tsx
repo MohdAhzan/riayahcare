@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/server"
 import { StatusBadge } from "@/components/admin/status-badge"
 import { notFound } from "next/navigation"
 import LeadActivityTimeline from "@/components/admin/lead-activity-timeline"
+import LeadActions from "@/components/admin/lead-actions"
 
 export default async function LeadDetail({
   params,
@@ -134,6 +135,11 @@ export default async function LeadDetail({
             <button className="btn-glass w-full">Update Status</button>
           </form>
 
+        </div>
+
+        <div className="space-y-6">
+          <LeadActions lead={lead} />
+          <LeadActivityTimeline leadId={lead.lead_id} />
         </div>
 
         <LeadActivityTimeline leadId={lead.lead_id} />
