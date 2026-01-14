@@ -3,6 +3,10 @@
 
 // app/api/admin/leads/[id]/status/route.ts
 
+
+
+// app/api/admin/leads/[id]/status/route.ts
+
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 import { NextResponse } from "next/server"
@@ -11,13 +15,12 @@ export async function POST(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  // ✅ MUST await params
   const { id } = await params
-
   const supabase = await createClient()
 
   const form = await req.formData()
   const newStatusId = Number(form.get("lead_status_id"))
+  const note = form.get("note")?.toString().trim()
 
   const {
     data: { user },
@@ -31,9 +34,7 @@ export async function POST(
 
   const oldStatusId = lead?.lead_status_id ?? null
 
-
-  const note = form.get("note")?.toString().trim()
-
+  // ✅ ALWAYS allow notes (independent of status change)
   if (note) {
     await supabase.from("lead_notes").insert({
       lead_table: "leads",
@@ -43,11 +44,13 @@ export async function POST(
     })
   }
 
+  // ✅ Update status
   await supabase
-  .from("leads")
-  .update({ lead_status_id: newStatusId })
-  .eq("id", id)
+    .from("leads")
+    .update({ lead_status_id: newStatusId })
+    .eq("id", id)
 
+  // ✅ Status history ONLY when status changes
   if (oldStatusId !== newStatusId) {
     await supabase.from("lead_status_history").insert({
       lead_id: id,
@@ -73,6 +76,9 @@ export async function POST(
 
   return NextResponse.redirect(new URL(referer))
 }
+
+
+
 
 
 
