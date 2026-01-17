@@ -1,6 +1,33 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { getAdminClient } from "@/lib/supabase/admin"
 
+import { createClient } from "@/lib/supabase/client"
+
+export async function GET() {
+  try {
+    const supabase = createClient()
+
+    const buckets = ["banners", "hospitals", "doctors", "blogs", "testimonials", "about"]
+
+    for (const bucketName of buckets) {
+      const { data: existingBucket } = await supabase.storage.getBucket(bucketName)
+
+      if (!existingBucket) {
+        await supabase.storage.createBucket(bucketName, {
+          public: true,
+          fileSizeLimit: 10485760, // 10MB
+        })
+        console.log(`Bucket ${bucketName} created`)
+      }
+    }
+
+    return Response.json({ success: true, message: "All buckets initialized" })
+  } catch (error) {
+    console.error("Bucket creation error:", error)
+    return Response.json({ error: "Failed to create buckets" }, { status: 500 })
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData()

@@ -1,17 +1,36 @@
 {
+
   "Navbar": {
     "hospitals": "Hospitals",
     "doctors": "Doctors",
     "procedures": "Procedures",
-    "admin": "Admin",
+    "blogs": "Blog",
+    "testimonials": "Testimonials",
+    "aboutus": "About Us",
     "get_premium_consultation": "Get Premium Consultation"
   },
-
 
   "Landing": {
     "title": "Welcome to Riayah Care",
     "subtitle": "Compassionate Care & World Class Treatment",
     "cta_text": "Contact us"
+  },
+   
+  "Blog": {
+    "title": "Our Blog",
+    "subtitle": "Medical insights, patient stories, and healthcare news",
+    "search_placeholder": "Search articles...",
+    "no_results": "No articles found",
+    "read_more": "Read More",
+    "view_all": "View All Articles",
+    "back_to_blog": "Back to Blog",
+    "categories": {
+      "all": "All",
+      "news": "News",
+      "treatment": "Treatment",
+      "story": "Patient Stories",
+      "info": "Information"
+    }
   },
 
   "Form": {
@@ -313,7 +332,27 @@
   "faqs": {
     "title": "Frequently Asked Questions (FAQ's)",
     "subtitle": "Clear answers to common questions"
+  },
+
+  "Testimonials": {
+    "title": "Patient Success Stories",
+    "subtitle": "Real experiences from patients who found hope and healing",
+    "all_treatments": "All Treatments",
+    "watch_video": "Watch Video",
+    "no_results": "No testimonials found"
+  },
+  
+  "AboutUs": {
+    "title": "About Riayah Care",
+    "subtitle": "Connecting patients with world-class healthcare across borders",
+    "what_drives_us": "What Drives Us",
+    "meet_team": "Meet Our Team",
+    "team_subtitle": "Dedicated professionals committed to your healthcare journey",
+    "cta_title": "Ready to Start Your Healthcare Journey?",
+    "cta_subtitle": "Get in touch with our medical advisors for personalized guidance",
+    "cta_button": "Get Free Consultation"
   }
+
 
 }
 

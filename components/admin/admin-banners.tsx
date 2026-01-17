@@ -1,3 +1,6 @@
+
+//components/admin/admin-banners.tsx
+
 "use client"
 
 import type React from "react"
