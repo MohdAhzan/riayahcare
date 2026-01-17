@@ -31,7 +31,14 @@ export default function NavbarV2() {
   }
 
   return (
-    <nav className="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50">
+    <nav className="sticky top-0 z-50  backdrop-blur-sm border-b border-slate-700/50"
+      style={{
+
+        background: "linear-gradient(90deg, rgba(250, 253, 255, 1) 0%, rgba(210, 247, 210, 0.68) 0%, rgba(224, 255, 224, 0.15) 21%, rgba(224, 255, 224, 0.1) 78%, rgba(210, 247, 210, 0.45) 100%)"
+
+      }}
+    >
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -39,76 +46,66 @@ export default function NavbarV2() {
             <Image
               src="/logo2.png"
               alt="Riayah Care Logo"
-              width={50}
-              height={50}
+              width={70}
+              height={70}
               className="rounded-lg"
               priority
             />
-            <span className="font-bold text-xl text-white group-hover:text-green-400 transition">
+            <span className="font-bold text-xl text-gray-900  group-hover:text-emerald-500 transition">
               Riayah Care
             </span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center gap-8">
-            <Link 
-              href="/hospitals" 
-              className="text-gray-300 hover:text-green-400 transition font-medium"
-            >
-              {t("hospitals")}
-            </Link>
-            <Link 
-              href="/doctors" 
-              className="text-gray-300 hover:text-green-400 transition font-medium"
-            >
-              {t("doctors")}
-            </Link>
-            <Link 
-              href="/procedures" 
-              className="text-gray-300 hover:text-green-400 transition font-medium"
-            >
-              {t("procedures")}
-            </Link>
-            <Link 
-              href="/blogs" 
-              className="text-gray-300 hover:text-green-400 transition font-medium"
-            >
-              Blog
-            </Link>
-            <Link 
-              href="/testimonials" 
-              className="text-gray-300 hover:text-green-400 transition font-medium"
-            >
-              Testimonials
-            </Link>
-            <Link 
-              href="/aboutus" 
-              className="text-gray-300 hover:text-green-400 transition font-medium"
-            >
-              About Us
-            </Link>
-
+          <div className="hidden lg:flex items-center gap-4"> {/* Adjusted gap slightly for pill padding */}
+            {[
+              { name: t("hospitals"), href: "/hospitals" },
+              { name: t("doctors"), href: "/doctors" },
+              { name: t("procedures"), href: "/procedures" },
+              { name: "Blog", href: "/blogs" },
+              { name: "Testimonials", href: "/testimonials" },
+              { name: "About Us", href: "/aboutus" },
+            ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="
+                  px-4 py-2 
+                  rounded-full 
+                  border border-transparent 
+                  text-gray-900 font-bold 
+                  transition-all duration-300 
+                  hover:bg-white/80 
+                  hover:border-emerald-500/30 
+                  hover:shadow-md 
+                  hover:-translate-y-1
+                  flex items-center justify-center
+                  "
+                >
+                  {link.name}
+                </Link>
+              ))}
             {/* Language Selector */}
             <div className="relative">
               <button
                 onClick={() => setLanguageOpen(!languageOpen)}
-                className="flex items-center gap-2 px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg hover:border-green-500 transition text-gray-300"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-50 to-green-50 border border-green-200 rounded-full hover:border-green-400 transition font-medium text-gray-700"
               >
                 <Globe className="w-4 h-4" />
                 {selectedLanguage}
               </button>
 
               {languageOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-slate-800 border border-slate-700 rounded-lg shadow-xl z-50 w-40 overflow-hidden">
+                <div className="absolute top-full right-0 mt-2 bg-gradient-to-r from-emerald-50 to-green-50 border border-green-200 hover:border-green-400 transition font-medium text-gray-700" >
                   {languages.map((lang) => (
                     <button
                       key={lang.code}
                       onClick={() => changeLanguage(lang.code)}
                       className={`w-full text-left px-4 py-3 transition ${
-                        selectedLanguage === lang.name 
-                          ? "bg-green-600 text-white" 
-                          : "text-gray-300 hover:bg-slate-700"
-                      }`}
+selectedLanguage === lang.name 
+? "bg-green-600 text-white" 
+: "text-black-300 hover:bg-green-100"
+}`}
                     >
                       {lang.name}
                     </button>
@@ -127,7 +124,7 @@ export default function NavbarV2() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-gray-300 hover:text-white transition"
+            className="lg:hidden p-2 text-black-300 hover:text-white transition"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -139,42 +136,42 @@ export default function NavbarV2() {
           <div className="lg:hidden border-t border-slate-700 py-4 space-y-3">
             <Link 
               href="/hospitals" 
-              className="block px-4 py-2 text-gray-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
+              className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
               {t("hospitals")}
             </Link>
             <Link 
               href="/doctors" 
-              className="block px-4 py-2 text-gray-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
+              className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
               {t("doctors")}
             </Link>
             <Link 
               href="/procedures" 
-              className="block px-4 py-2 text-gray-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
+              className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
               {t("procedures")}
             </Link>
             <Link 
               href="/blogs" 
-              className="block px-4 py-2 text-gray-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
+              className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
               Blog
             </Link>
             <Link 
               href="/testimonials" 
-              className="block px-4 py-2 text-gray-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
+              className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
               Testimonials
             </Link>
             <Link 
               href="/aboutus" 
-              className="block px-4 py-2 text-gray-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
+              className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
               About Us
@@ -184,7 +181,7 @@ export default function NavbarV2() {
               <div className="relative">
                 <button
                   onClick={() => setLanguageOpen(!languageOpen)}
-                  className="w-full flex items-center justify-between px-4 py-2 bg-slate-800 border border-slate-700 rounded-lg text-gray-300"
+                  className="w-full flex items-center rounded-full justify-between px-4 py-2 bg-gradient-to-r from-emerald-50 to-green-50 border border-green-200 hover:border-green-400 transition font-medium text-gray-700"
                 >
                   <span className="flex items-center gap-2">
                     <Globe className="w-4 h-4" />
@@ -192,7 +189,7 @@ export default function NavbarV2() {
                   </span>
                 </button>
                 {languageOpen && (
-                  <div className="mt-2 bg-slate-800 border border-slate-700 rounded-lg overflow-hidden">
+                  <div className="mt-2 bg-gradient-to-r from-emerald-50 to-green-50 border border-green-200  hover:border-green-400 transition font-medium text-gray-700 rounded-lg overflow-hidden">
                     {languages.map((lang) => (
                       <button
                         key={lang.code}
@@ -201,10 +198,10 @@ export default function NavbarV2() {
                           setMenuOpen(false)
                         }}
                         className={`w-full text-left px-4 py-3 transition ${
-                          selectedLanguage === lang.name 
-                            ? "bg-green-600 text-white" 
-                            : "text-gray-300 hover:bg-slate-700"
-                        }`}
+selectedLanguage === lang.name 
+? "bg-green-600 text-white" 
+: "text-black-300 hover:bg-green-100"
+}`}
                       >
                         {lang.name}
                       </button>

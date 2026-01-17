@@ -1,7 +1,7 @@
 
 
 // app/[locale]/page.tsx
-import LandingBannerV2 from "@/components/landing-banner"
+import LandingBanner from "@/components/landing-banner"
 import SearchForm from "@/components/search-form"
 import HospitalsSection from "@/components/hospitals-section"
 import DoctorsSection from "@/components/doctors-section"
@@ -25,7 +25,7 @@ export default function Home() {
       <div>
         {/* Landing banner - full screen height */}
         <section className="h-screen w-full">
-          <LandingBannerV2 />
+          <LandingBanner />
         </section>
         
       {/* MOBILE FEATURE TILES */}

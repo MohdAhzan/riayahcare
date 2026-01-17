@@ -143,22 +143,27 @@ export default function LandingBanner() {
         backgroundPosition: "center",
       }}
     >
-      {/* Soft LEFT gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-transparent" />
+      {/* CUSTOM GRADIENT OVERLAY */}
+      <div 
+        className="absolute inset-0 pointer-events-none" 
+        style={{
+          background: "linear-gradient(90deg, rgba(250, 253, 255, 1) 0%, rgba(0, 0, 0, 0.64) 0%, rgba(196, 196, 196, 0.39) 41%, rgba(140, 139, 138, 0.28) 64%, rgba(5, 1, 1, 0.45) 95%)"
+        }}
+      />
 
       {/* ============================
           HERO CONTENT
       ============================ */}
       <div
-        className="
-          relative z-10
-          pt-28 sm:pt-32 lg:pt-40
-          px-4 sm:px-8 lg:px-20
-          max-w-xl
-          text-center lg:text-left
-          text-white
-        "
-      >
+  className="
+    relative z-10
+    pt-48 sm:pt-52 lg:pt-40  
+    px-4 sm:px-8 lg:px-20
+    max-w-xl
+    text-center lg:text-left
+    text-white
+  "
+>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight drop-shadow-lg">
           {banner.title}
         </h1>
