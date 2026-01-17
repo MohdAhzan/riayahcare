@@ -1,3 +1,4 @@
+//components/landing-banner.tsx
 
 "use client"
 
@@ -134,7 +135,7 @@ export default function LandingBanner() {
 
   return (
     <section
-      className="relative min-h-screen lg:h-screen w-full overflow-visible lg:overflow-hidden"
+      className="relative h-screen w-full"
 
       style={{
         backgroundImage: `url(${banner.image_url})`,
@@ -180,10 +181,12 @@ export default function LandingBanner() {
       ============================ */}
       <div
         className="
+          hidden lg:block
           relative z-10
           mt-20
-          lg:absolute lg:bottom-10 lg:left-0 lg:right-0
+          lg:absolute lg:bottom-20 lg:left-0 lg:right-0
           px-4 sm:px-6 lg:px-20
+
         "
       >
         <div className="max-w-7xl mx-auto">

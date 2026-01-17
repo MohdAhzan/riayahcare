@@ -15,6 +15,7 @@ import FAQs from "@/components/faqs"
 import BlogsSection from "@/components/blogs-section"
 import TestimonialsSection from "@/components/testimonials-section"
 import AboutSection from "@/components/about-section"
+import LandingBannerTilesMobile from "@/components/landingbanner-tiles-mobile"
 
 export default function Home() {
   return (
@@ -22,10 +23,13 @@ export default function Home() {
       <NavbarV2 />
 
       <div>
-        {/* Landing banner - full screen height with dark theme */}
+        {/* Landing banner - full screen height */}
         <section className="h-screen w-full">
           <LandingBannerV2 />
         </section>
+        
+      {/* MOBILE FEATURE TILES */}
+      <LandingBannerTilesMobile/>
 
         {/* Rest of content - normal scroll below */}
         <div className="w-full">
