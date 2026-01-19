@@ -1,8 +1,9 @@
-
+//app/[locale]/doctors/[slug]/page.tsx
 
 "use client"
 import { useEffect, useMemo, useState } from "react"
 import { useParams } from "next/navigation"
+import { dbT } from "@/i18n/db-translate"
 import { createClient } from "@/lib/supabase/client"
 import Navbar from "@/components/navbar"
 import DesktopContactBar from "@/components/ui/desktop-contact-bar"
@@ -54,9 +55,10 @@ type Doctor = {
 /* ================= PAGE ================= */
 
 export default function DoctorDetailPage() {
-  const { slug } = useParams<{ slug: string }>()
   const [doctor, setDoctor] = useState<Doctor | null>(null)
   const [loading, setLoading] = useState(true)
+  const { slug,locale } = useParams()
+  const lang = locale === "ar" ? "ar" : "en"
 
   /* ================= FETCH ================= */
 
@@ -67,20 +69,35 @@ export default function DoctorDetailPage() {
       .from("doctors")
       .select(
         `
-        *,
-        hospital_doctors (
-          specialties,
-          hospitals ( name )
-        )
-      `
+*,
+hospital_doctors (
+specialties,
+hospitals ( name )
+)
+`
       )
       .eq("slug", slug)
       .maybeSingle()
       .then(({ data }) => {
-        setDoctor(data as Doctor | null)
-        setLoading(false)
+        if (!data) return
+
+        setDoctor({
+          ...data,
+          name: dbT(data, "name", lang),
+          bio: dbT(data, "bio", lang),
+          education: dbT(data, "education", lang),
+          languages: dbT(data, "languages", lang),
+          expertise: dbT(data, "expertise", lang),
+          conditions_treated: dbT(data, "conditions_treated", lang),
+          procedures: dbT(data, "procedures", lang),
+          experience_details:
+          data.translations?.[lang]?.experience_details ??
+            data.experience_details,
+        })
+        setLoading(false) 
       })
-  }, [slug])
+
+  }, [lang])
 
   /* ================= DERIVED ================= */
 
@@ -150,8 +167,8 @@ export default function DoctorDetailPage() {
           </div>
 
           {/* CTA */}
-  
-       <DesktopContactBar />
+
+          <DesktopContactBar />
 
         </div>
       </section>
@@ -232,10 +249,21 @@ export default function DoctorDetailPage() {
                 <GraduationCap className="w-5 h-5 text-primary" />
                 Education
               </h2>
+
               <ul className="list-disc ml-5">
-                {doctor.education
-                  .replace(/[\[\]"]/g, "")
-                  .split(",")
+                {(Array.isArray(doctor.education)
+                  ? doctor.education
+                  : (() => {
+                    try {
+                      const parsed = JSON.parse(doctor.education)
+                      return Array.isArray(parsed)
+                        ? parsed
+                        : doctor.education.split(",")
+                    } catch {
+                      return doctor.education.split(",")
+                    }
+                  })()
+                )
                   .map((e) => e.trim())
                   .filter(Boolean)
                   .map((e) => (
@@ -244,6 +272,7 @@ export default function DoctorDetailPage() {
               </ul>
             </section>
           ) : null}
+
 
           {/* LANGUAGES */}
           {doctor.languages?.length ? (
@@ -307,8 +336,8 @@ export default function DoctorDetailPage() {
           </div>
         </aside>
       </section>
-  
-            <FAQs section="doctor_detail" entityId={doctor.id} />
+
+      <FAQs section="doctor_detail" entityId={doctor.id} />
       <HelpWidget/>
       <Footer />
     </div>

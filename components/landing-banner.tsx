@@ -7,6 +7,7 @@ import Link from "next/link"
 import { Hospital, Stethoscope, Plane, UserCheck } from "lucide-react"
 import { createClient } from "@supabase/supabase-js"
 import { Button } from "@/components/ui/button"
+import { useTranslations } from "next-intl"
 
 /* ============================
    Types
@@ -51,32 +52,6 @@ const DEFAULT_BANNER: BannerDisplayData = {
   cta_link: "/hospitals",
 }
 
-const features = [
-  {
-    icon: Hospital,
-    title: "Premium Hospitals",
-    description:
-      "Access internationally accredited medical facilities with state-of-the-art technology",
-  },
-  {
-    icon: Stethoscope,
-    title: "Expert Doctors",
-    description:
-      "Connect with board-certified specialists with proven international experience",
-  },
-  {
-    icon: Plane,
-    title: "Travel Support",
-    description:
-      "Complete travel arrangements including visa, accommodation, and transportation",
-  },
-  {
-    icon: UserCheck,
-    title: "Personal Care",
-    description:
-      "24/7 dedicated care coordinators for seamless communication and support",
-  },
-]
 
 /* ============================
    Component
@@ -85,7 +60,30 @@ const features = [
 export default function LandingBanner() {
   const [banner, setBanner] = useState<BannerDisplayData | null>(null)
   const [loading, setLoading] = useState(true)
+  const t = useTranslations("landing")
 
+const features = [
+  {
+    icon: Hospital,
+    title: t("features.hospital.title"),
+    description: t("features.hospital.description"),
+  },
+  {
+    icon: Stethoscope,
+    title: t("features.stethoscope.title"),
+    description: t("features.stethoscope.description"),
+  },
+  {
+    icon: Plane,
+    title: t("features.plane.title"),
+    description: t("features.plane.description"),
+  },
+  {
+    icon: UserCheck,
+    title: t("features.user_check.title"),
+    description: t("features.user_check.description"),
+  },
+]
   useEffect(() => {
     const fetchBanner = async () => {
       try {

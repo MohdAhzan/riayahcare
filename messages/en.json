@@ -10,10 +10,28 @@
     "get_premium_consultation": "Get Premium Consultation"
   },
 
-  "Landing": {
+  "landing": {
     "title": "Welcome to Riayah Care",
     "subtitle": "Compassionate Care & World Class Treatment",
-    "cta_text": "Contact us"
+    "cta_text": "Contact us",
+    "features":{
+      "hospital":{
+      "title":"Premium Hospitals",
+      "description":"Access internationally accredited medical facilities with state-of-the-art technology"
+      },
+      "stethoscope":{
+      "title":"Expert Doctors",
+      "description":"Connect with board-certified specialists with proven international experience"
+      },
+      "plane":{
+      "title":"Travel Support",
+      "description":"Complete travel arrangements including visa, accommodation, and transportation"
+      },
+      "user_check":{
+      "title":"Personal Care",
+      "description":"24/7 dedicated care coordinators for seamless communication and support"
+      }
+    }
   },
    
   "Blog": {
@@ -128,6 +146,12 @@
     "24/7":"Available 24/7 for your inquiries"
   },
 
+  "doctors" : {
+    "title":"Meet Our Doctors",
+    "tag" : "Experienced medical professionals with proven track records",
+    "view_all": "View All Doctors"
+  },
+    
   "hospitals" : {
     "title":"Top Hospitals Worldwide",
     "tag" : "Access world-class healthcare from top accredited hospitals",

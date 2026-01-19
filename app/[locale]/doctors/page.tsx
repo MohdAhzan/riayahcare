@@ -12,6 +12,8 @@ import DesktopContactBar from "@/components/ui/desktop-contact-bar"
 import { Star, Briefcase, Building2, Filter, ShieldCheck, Headphones, BadgeCheck, } from "lucide-react"
 import HelpWidget from "@/components/help-widget"
 import FAQs from "@/components/faqs"
+import { useParams } from "next/navigation"
+import { dbT } from "@/i18n/db-translate"
 
 
 
@@ -40,6 +42,8 @@ export default function DoctorsPage() {
   const [selectedSpecialty, setSelectedSpecialty] = useState("")
   const [selectedHospital, setSelectedHospital] = useState("")
   const [sortBy, setSortBy] = useState("rating")
+  const { locale } = useParams()
+const lang = locale === "ar" ? "ar" : "en"
 
   /* ---------------- FETCH ---------------- */
   useEffect(() => {
@@ -60,7 +64,14 @@ export default function DoctorsPage() {
           )
         `)
 
-      setDoctors((data ?? []) as unknown as Doctor[])
+      setDoctors(
+  (data ?? []).map((d: any) => ({
+    ...d,
+    name: dbT(d, "name", lang),
+    bio: dbT(d, "bio", lang),
+  }))
+)
+
       setLoading(false)
     }
 

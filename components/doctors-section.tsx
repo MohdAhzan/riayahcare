@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { createClient } from "@/lib/supabase/client"
 import { Star } from "lucide-react"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 interface Doctor {
   id: string
@@ -20,11 +21,12 @@ interface Doctor {
 export default function DoctorsSection() {
   const [doctors, setDoctors] = useState<Doctor[]>([])
   const [loading, setLoading] = useState(true)
+  const t = useTranslations("doctors")
 
   useEffect(() => {
     const fetchDoctors = async () => {
       const supabase = createClient()
-      const { data } = await supabase.from("doctors").select("*").limit(6)
+      const { data } = await supabase.from("doctors").select("*").limit(3)
       setDoctors(data || [])
       setLoading(false)
     }
@@ -38,8 +40,8 @@ export default function DoctorsSection() {
     <section className="py-16 md:py-24 border border-emerald-200 bg-gradient-to-br from-green-50 to-emerald-50 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Meet Our Doctors</h2>
-          <p className="text-gray-600 text-lg">Experienced medical professionals with proven track records</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{t("title")}</h2>
+          <p className="text-gray-600 text-lg">{t("tag")}</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,7 +74,7 @@ export default function DoctorsSection() {
             href="/doctors"
             className="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-8 py-3 rounded-lg transition"
           >
-            View All Doctors
+            {t("view_all")}
           </Link>
         </div>
       </div>

@@ -1,3 +1,6 @@
+
+//components/admin/addDoctor/admin-doctors-root.tsx
+
 "use client"
 
 import { useState } from "react"

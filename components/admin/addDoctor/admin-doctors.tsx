@@ -5,9 +5,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { createClient } from "@/lib/supabase/client"
-
-const supabase = createClient()
 
 /* ================= TYPES ================= */
 
@@ -169,11 +166,19 @@ export default function AdminDoctors({
         image_url,
       }
 
-      const { error } = existingDoctor
-        ? await supabase.from("doctors").update(payload).eq("id", existingDoctor.id)
-        : await supabase.from("doctors").insert(payload)
+      const res = await fetch("/api/admin/doctors", {
+        method: existingDoctor ? "PUT" : "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...(existingDoctor && { id: existingDoctor.id }),
+          ...payload,
+        }),
+      })
 
-      if (error) throw error
+      if (!res.ok) {
+        const r = await res.json()
+        throw new Error(r.error || "Failed")
+      }
 
       onSuccessAction?.()
       alert(existingDoctor ? "Doctor updated" : "Doctor added")

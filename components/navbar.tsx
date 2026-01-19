@@ -62,9 +62,10 @@ export default function NavbarV2() {
               { name: t("hospitals"), href: "/hospitals" },
               { name: t("doctors"), href: "/doctors" },
               { name: t("procedures"), href: "/procedures" },
-              { name: "Blog", href: "/blogs" },
-              { name: "Testimonials", href: "/testimonials" },
-              { name: "About Us", href: "/aboutus" },
+              { name: t("blogs"), href: "/blogs" },
+              { name: t("testimonials"), href: "/testimonials" },
+              { name: t("aboutus"), href: "/aboutus" },
+              
             ].map((link) => (
                 <Link
                   key={link.href}
@@ -160,21 +161,22 @@ selectedLanguage === lang.name
               className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
-              Blog
+              {t("blogs")}
             </Link>
             <Link 
               href="/testimonials" 
               className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
-              Testimonials
+              {t("testimonials")}
+              
             </Link>
             <Link 
               href="/aboutus" 
               className="block px-4 py-2 text-black-300 hover:text-green-400 hover:bg-slate-800 rounded transition"
               onClick={() => setMenuOpen(false)}
             >
-              About Us
+              {t("aboutus")}
             </Link>
 
             <div className="px-4">
