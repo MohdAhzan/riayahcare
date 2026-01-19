@@ -76,7 +76,7 @@ const lang = locale === "ar" ? "ar" : "en"
     }
 
     fetchDoctors()
-  }, [])
+  }, [lang])
 
   /* ---------------- FILTER OPTIONS ---------------- */
   const specialties = useMemo(() => {
