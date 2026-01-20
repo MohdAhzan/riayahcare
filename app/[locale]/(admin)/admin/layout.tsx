@@ -10,9 +10,9 @@ export default async function AdminLayout({
   children,
   params,
 }: {
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
-}) {
+    children: React.ReactNode
+    params: Promise<{ locale: string }>
+  }) {
   const { locale } = await params
   const supabase = await createClient()
 
@@ -33,6 +33,9 @@ export default async function AdminLayout({
             </a>
             <a className="block px-3 py-2 rounded hover:bg-accent" href={`/${locale}/admin/leads`}>
               Leads
+            </a>
+            <a className="block px-3 py-2 rounded hover:bg-accent" href={`/${locale}/admin/automation`}>
+              Automation
             </a>
           </nav>
 
