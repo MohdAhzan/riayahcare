@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8 flex justify-between items-center flex-wrap gap-4">
           <p className="text-sm">&copy; {t("legal.copyright")}</p>
           <div className="flex gap-4">
-            <Link href="/privacy" className="text-sm hover:text-green-400 transition">
+            <Link href="/privacy-policy" className="text-sm hover:text-green-400 transition">
               {t("legal.privacy")}
             </Link>
             <Link href="/terms" className="text-sm hover:text-green-400 transition">
