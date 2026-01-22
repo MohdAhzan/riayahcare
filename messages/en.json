@@ -1,5 +1,4 @@
 {
-
   "Navbar": {
     "hospitals": "Hospitals",
     "doctors": "Doctors",
@@ -9,31 +8,29 @@
     "aboutus": "About Us",
     "get_premium_consultation": "Get Premium Consultation"
   },
-
   "landing": {
     "title": "Welcome to Riayah Care",
     "subtitle": "Compassionate Care & World Class Treatment",
     "cta_text": "Contact us",
-    "features":{
-      "hospital":{
-      "title":"Premium Hospitals",
-      "description":"Access internationally accredited medical facilities with state-of-the-art technology"
+    "features": {
+      "hospital": {
+        "title": "Premium Hospitals",
+        "description": "Access internationally accredited medical facilities with state-of-the-art technology"
       },
-      "stethoscope":{
-      "title":"Expert Doctors",
-      "description":"Connect with board-certified specialists with proven international experience"
+      "stethoscope": {
+        "title": "Expert Doctors",
+        "description": "Connect with board-certified specialists with proven international experience"
       },
-      "plane":{
-      "title":"Travel Support",
-      "description":"Complete travel arrangements including visa, accommodation, and transportation"
+      "plane": {
+        "title": "Travel Support",
+        "description": "Complete travel arrangements including visa, accommodation, and transportation"
       },
-      "user_check":{
-      "title":"Personal Care",
-      "description":"24/7 dedicated care coordinators for seamless communication and support"
+      "user_check": {
+        "title": "Personal Care",
+        "description": "24/7 dedicated care coordinators for seamless communication and support"
       }
     }
   },
-   
   "Blog": {
     "title": "Our Blog",
     "subtitle": "Medical insights, patient stories, and healthcare news",
@@ -50,12 +47,10 @@
       "info": "Information"
     }
   },
-
   "Form": {
     "title": "Let Us Help You",
     "terms": "By submitting the form I agree to the Terms of Use and Privacy Policy of Riayah Care.",
     "response": "Thank you! Your quote request has been submitted. We'll contact you soon!",
-
     "placeholders": {
       "name": "Full Name",
       "country": "Select Country",
@@ -67,25 +62,19 @@
       "upload": "Upload your medical report (optional)",
       "age": "Age or Date of Birth"
     },
-
     "buttons": {
       "submit": "Get FREE Quote",
       "submitting": "Submitting..."
     },
-
     "labels": {
       "gender": "Gender"
     },
-
     "gender": {
       "m": "male",
       "f": "female",
       "o": "other"
     }
   },
-
-
-
   "specialty_tiles": {
     "title": "Multi-Specialty Focus",
     "tag": "We cover all medical needs, from hair transplants to heart transplants.",
@@ -131,51 +120,40 @@
         "description": "Compassionate medical care dedicated to the health, growth, and well-being of children"
       }
     },
-    "best":"Best",
-    "doctor":"Doctors in India",
-    "doc_data":"expert doctors specializing in",
-    "hospital":"Hospitals In India",
-    "hos_data":"hospitals with world-class",
-    "facilities":"facilities"
+    "best": "Best",
+    "doctor": "Doctors in India",
+    "doc_data": "expert doctors specializing in",
+    "hospital": "Hospitals In India",
+    "hos_data": "hospitals with world-class",
+    "facilities": "facilities"
   },
-
-
-  "help_widget":{
-    "title":"Need Help?",
-    "tag":"Our healthcare experts are ready to assist you with any questions about treatments or doctors.",
-    "24/7":"Available 24/7 for your inquiries"
+  "help_widget": {
+    "title": "Need Help?",
+    "tag": "Our healthcare experts are ready to assist you with any questions about treatments or doctors.",
+    "24/7": "Available 24/7 for your inquiries"
   },
-
-  "doctors" : {
-    "title":"Meet Our Doctors",
-    "tag" : "Experienced medical professionals with proven track records",
+  "doctors": {
+    "title": "Meet Our Doctors",
+    "tag": "Experienced medical professionals with proven track records",
     "view_all": "View All Doctors"
   },
-    
-  "hospitals" : {
-    "title":"Top Hospitals Worldwide",
-    "tag" : "Access world-class healthcare from top accredited hospitals",
+  "hospitals": {
+    "title": "Top Hospitals Worldwide",
+    "tag": "Access world-class healthcare from top accredited hospitals",
     "view_all": "View All Hospitals"
   },
-
   "all_hospital_page": {
     "page_title": "Hospitals & Medical Centers",
     "page_subtitle": "Explore world-class healthcare facilities from leading hospitals worldwide",
-
     "filters": {
       "country_label": "Filter by Country",
       "country_all": "All Countries",
-
       "specialty_label": "Filter by Specialty",
       "specialty_all": "All Specialties",
-
       "reset": "Reset Filters"
     },
-
     "loading": "Loading hospitals...",
-
     "no_results": "No hospitals found matching your filters.",
-
     "sidebar": {
       "why_title": "Why Riayah Care?",
       "why_items": [
@@ -189,24 +167,16 @@
       "help_button": "Need Help?"
     }
   },
-
-
   "hospital_page": {
     "loading": "Loading...",
     "not_found": "Hospital not found.",
-
     "established": "Established",
-
     "about": "About",
     "specialties": "Specialties",
-
     "international_services": "International Patient Services",
-
     "why_choose_prefix": "Why Choose",
-
     "facilities": {
       "title": "Facilities",
-
       "sections": {
         "comfort": {
           "title": "Comfort During Stay",
@@ -235,7 +205,6 @@
             "Parking available"
           ]
         },
-
         "money": {
           "title": "Money Matters",
           "items": [
@@ -248,7 +217,6 @@
             "Netbanking"
           ]
         },
-
         "food": {
           "title": "Food",
           "items": [
@@ -257,7 +225,6 @@
             "International Cuisine"
           ]
         },
-
         "treatment": {
           "title": "Treatment Related",
           "items": [
@@ -269,7 +236,6 @@
             "Post operative followup"
           ]
         },
-
         "language": {
           "title": "Language",
           "items": [
@@ -277,7 +243,6 @@
             "Translation services"
           ]
         },
-
         "transportation": {
           "title": "Transportation",
           "items": [
@@ -291,23 +256,19 @@
           ]
         }
       },
-
       "view_more": "View More ▼",
       "view_less": "View Less ▲"
     },
-
     "gallery": {
       "title": "Gallery",
       "view_all": "View all photos",
       "view_less": "View less"
     },
-
     "cta": {
       "title": "Need Assistance or a Quote?",
       "subtitle": "Let us help you connect with",
       "button": "Book Consultation"
     },
-
     "modal": {
       "title": "Book Consultation",
       "name": "Full Name",
@@ -316,48 +277,37 @@
       "submit": "Submit",
       "submitting": "Submitting..."
     }
-
   },
-
   "footer": {
     "brand": {
       "name": "Riayah Care",
       "tagline": "Connecting patients with world-class healthcare worldwide."
     },
-
     "platform": {
       "title": "Platform",
       "hospitals": "Hospitals",
       "doctors": "Doctors",
       "procedures": "Procedures"
     },
-
     "company": {
       "title": "Company",
       "about": "About Us",
       "contact": "Contact",
       "blog": "Blog"
     },
-
     "social": {
       "title": "Follow Us"
     },
-
     "legal": {
       "copyright": "© 2025 Riayah Care. All rights reserved.",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service"
     }
-
-
-
-
   },
   "faqs": {
     "title": "Frequently Asked Questions (FAQ's)",
     "subtitle": "Clear answers to common questions"
   },
-
   "Testimonials": {
     "title": "Patient Success Stories",
     "subtitle": "Real experiences from patients who found hope and healing",
@@ -365,7 +315,6 @@
     "watch_video": "Watch Video",
     "no_results": "No testimonials found"
   },
-  
   "AboutUs": {
     "title": "About Riayah Care",
     "subtitle": "Connecting patients with world-class healthcare across borders",
@@ -375,8 +324,30 @@
     "cta_title": "Ready to Start Your Healthcare Journey?",
     "cta_subtitle": "Get in touch with our medical advisors for personalized guidance",
     "cta_button": "Get Free Consultation"
+  },
+  "Procedures": {
+    "page_title": "Medical Procedures",
+    "page_subtitle": "Browse our comprehensive list of procedures with transparent pricing",
+    "filter_specialty": "Filter by Specialty",
+    "all_specialties": "All Specialties",
+    "max_price": "Max Price",
+    "reset_filters": "Reset Filters",
+    "no_results": "No procedures found matching your filters.",
+    "days": "days",
+    "view_details": "View Details"
+  },
+  "ProcedureDetail": {
+    "loading": "Loading...",
+    "not_found": "Procedure not found.",
+    "overview": "Overview",
+    "cost_range": "Cost Range",
+    "recovery": "Recovery Time",
+    "success_rate": "Success Rate",
+    "days": "days",
+    "related_hospitals": "Hospitals Offering This Procedure",
+    "related_doctors": "Specialist Doctors",
+    "cta_title": "Ready to Get Started?",
+    "cta_subtitle": "Get a personalized quote for your treatment",
+    "get_quote": "Get Free Quote"
   }
-
-
 }
-

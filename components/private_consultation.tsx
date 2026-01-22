@@ -14,7 +14,7 @@ interface ConsultationForm {
     time: string // This will store the final IST time string (e.g., "10:00 AM")
     topic: string
     // New optional field for the file or its URL
-    medicalReport: string | File 
+    medicalReport: string | File
 }
 
 const discussionTopics = [
@@ -37,7 +37,7 @@ const FormInput = ({ icon: Icon, name, type, placeholder, value, required = true
             name={name}
             placeholder={placeholder}
             value={value}
-            onChange={onChange} 
+            onChange={onChange}
             required={required}
             className={`bg-white w-full pl-10 pr-3 py-3 border rounded-lg focus:ring-emerald-500 text-gray-900 
                 ${error ? 'border-red-500 focus:border-red-500' : 'border-gray-300 focus:border-emerald-500'}`}
@@ -48,7 +48,7 @@ const FormInput = ({ icon: Icon, name, type, placeholder, value, required = true
 
 // Reusable Select component with error display
 const FormSelect = ({ icon: Icon, name, value, required = true, error, children, placeholder, onChange }: any) => (
-    <div 
+    <div
         className="relative">
         <Icon className="absolute left-3 top-3 h-5 w-5 text-gray-400 pointer-events-none" />
         <select
@@ -74,7 +74,7 @@ export default function PrivateConsultationSection() {
         email: "",
         phone: "",
         date: "",
-        time: "", 
+        time: "",
         topic: "",
         medicalReport: "", // Initialize new field
     })
@@ -92,49 +92,34 @@ export default function PrivateConsultationSection() {
     // 1. TIME SLOT LOGIC
     // ----------------------------------------------------------------------
 
-    const IST_SLOTS_24HR = [9, 10, 11, 12, 14, 15, 16, 17, 20, 21] 
+    const IST_SLOTS_24HR = [9, 10, 11, 12, 14, 15, 16, 17, 20, 21]
 
+    // Use static time slots to avoid hydration mismatch (server/client locale differences)
     const TIME_SLOTS_DATA = useMemo(() => {
-        const IST_OFFSET_MINUTES = 330 
-        
         return IST_SLOTS_24HR.map(hour => {
-            const date = new Date();
-            const IST_TIME_UTC = date.getTime() - date.getTimezoneOffset() * 60000 + IST_OFFSET_MINUTES * 60000;
-            const istSlotDate = new Date(IST_TIME_UTC);
-            
-            istSlotDate.setHours(hour, 0, 0, 0); 
-            
-            const istValue = istSlotDate.toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
-                minute: '2-digit', 
-                hour12: true, 
-                timeZone: 'Asia/Kolkata' 
-            });
-
-            const localLabel = istSlotDate.toLocaleTimeString(undefined, {
-                hour: '2-digit', 
-                minute: '2-digit', 
-                hour12: true,
-            });
+            const isPM = hour >= 12
+            const hour12 = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
+            const ampm = isPM ? 'PM' : 'AM'
+            const timeStr = `${hour12.toString().padStart(2, '0')}:00 ${ampm}`
 
             return {
-                istValue: istValue, // Saved to DB
-                localLabel: localLabel, // Displayed to user
-            };
-        });
-    }, []) 
+                istValue: timeStr,
+                localLabel: timeStr, // Using same value to avoid SSR mismatch
+            }
+        })
+    }, [])
 
     // ----------------------------------------------------------------------
     // 2. HANDLERS
     // ----------------------------------------------------------------------
-    
+
     // Use useCallback for simple text/select changes
     const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        
+
         setFormData(prev => ({ ...prev, [name]: value }));
         setValidationErrors(prev => ({ ...prev, [name]: null }))
-    }, []) 
+    }, [])
 
     // Handler for file input
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -145,10 +130,10 @@ export default function PrivateConsultationSection() {
         setFileName(file.name)
         setUploading(true)
         setUploaded(false)
-        
+
         // Optional: Simulate upload delay for better UX
-        await new Promise((r) => setTimeout(r, 1000)) 
-        
+        await new Promise((r) => setTimeout(r, 1000))
+
         setUploading(false)
         setUploaded(true)
     }
@@ -174,7 +159,7 @@ export default function PrivateConsultationSection() {
             setValidationErrors(errors)
             return
         }
-        setValidationErrors({}) 
+        setValidationErrors({})
 
         setIsSubmitting(true)
         setUploading(true) // Indicate background file processing
@@ -187,7 +172,7 @@ export default function PrivateConsultationSection() {
                 const file = formData.medicalReport as File
                 // Use a unique filename
                 const uniqueFileName = `${Date.now()}_${file.name}`
-                
+
                 // Supabase Storage upload: Bucket name is 'medical_reports' as per your reference
                 const { error: uploadError } = await supabase.storage
                     .from("medical_reports")
@@ -198,7 +183,7 @@ export default function PrivateConsultationSection() {
                     // Do not stop submission, but log an error and continue with an empty URL
                     // Optionally, show a specific error for the file
                     setSubmitMessage({ type: 'error', text: "Failed to upload medical report. We will proceed with the scheduling, but please send the report separately." })
-                    uploadedFileURL = "" 
+                    uploadedFileURL = ""
                 } else {
                     // Get public URL
                     const { data: publicUrlData } = supabase.storage
@@ -228,9 +213,9 @@ export default function PrivateConsultationSection() {
             }
 
             setSubmitMessage({ type: 'success', text: "Consultation scheduled successfully! We've received your request and will be in touch shortly to confirm." })
-            
+
             // Reset form and file states
-            setFormData({ fullName: "", email: "", phone: "", date: "", time: "", topic: "", medicalReport: "" }) 
+            setFormData({ fullName: "", email: "", phone: "", date: "", time: "", topic: "", medicalReport: "" })
             setFileName("")
             setUploaded(false)
 
@@ -238,7 +223,7 @@ export default function PrivateConsultationSection() {
             console.error("Submission error:", error)
             setSubmitMessage({ type: 'error', text: "❌ Failed to schedule consultation. Please check your details and try again." })
         } finally {
-            setIsSubmitting(false) 
+            setIsSubmitting(false)
             setUploading(false)
         }
     }
@@ -248,7 +233,7 @@ export default function PrivateConsultationSection() {
         const dates = []
         const today = new Date();
         today.setDate(today.getDate());
-        
+
         for (let i = 1; i <= 7; i++) {
             const date = new Date(today);
             date.setDate(date.getDate() + i);
@@ -289,7 +274,7 @@ export default function PrivateConsultationSection() {
                             </div>
 
                             <form onSubmit={handleSubmit} className="space-y-6">
-                                
+
                                 {/* 1. Personal Details */}
                                 <FormInput
                                     icon={User}
@@ -333,19 +318,19 @@ export default function PrivateConsultationSection() {
                                             <option key={d.value} value={d.value}>{d.label}</option>
                                         ))}
                                     </FormSelect>
-                                    
+
                                     <FormSelect
                                         icon={Clock}
                                         name="time"
-                                        value={formData.time} 
+                                        value={formData.time}
                                         onChange={handleChange}
                                         placeholder="Select Time"
                                         error={validationErrors.time}
                                     >
                                         {TIME_SLOTS_DATA.map(t => (
-                                            <option 
-                                                key={t.istValue} 
-                                                value={t.istValue} 
+                                            <option
+                                                key={t.istValue}
+                                                value={t.istValue}
                                             >
                                                 {t.localLabel}
                                             </option>
@@ -366,7 +351,7 @@ export default function PrivateConsultationSection() {
                                         <option key={topic} value={topic}>{topic}</option>
                                     ))}
                                 </FormSelect>
-                                
+
                                 {/* 4. Medical Report Upload (Optional) */}
                                 <div>
                                     <label
@@ -397,19 +382,19 @@ export default function PrivateConsultationSection() {
                                     />
                                 </div>
 
-                            {/* Submission Message */}
-                            {submitMessage.text && (
-                                <div className={`p-4 mb-4 rounded-lg font-semibold ${submitMessage.type === 'success' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
-                                    {submitMessage.text}
-                                </div>
-                            )}
+                                {/* Submission Message */}
+                                {submitMessage.text && (
+                                    <div className={`p-4 mb-4 rounded-lg font-semibold ${submitMessage.type === 'success' ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
+                                        {submitMessage.text}
+                                    </div>
+                                )}
 
 
                                 {/* 5. Submit Button */}
                                 <button
                                     type="submit"
                                     // Disable if submitting (which includes the file upload stage)
-                                    disabled={isSubmitting} 
+                                    disabled={isSubmitting}
                                     className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-emerald-600 text-white font-semibold rounded-lg hover:bg-emerald-700 transition disabled:opacity-50 shadow-md hover:shadow-lg mt-6"
                                 >
                                     <Calendar className="h-5 w-5" />

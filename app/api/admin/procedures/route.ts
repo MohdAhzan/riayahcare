@@ -124,8 +124,7 @@ export async function PUT(req: Request) {
           specialty: translated.specialty,
           description: translated.description
         }
-      },
-      updated_at: new Date().toISOString()
+      }
     }
 
     const { error } = await supabase

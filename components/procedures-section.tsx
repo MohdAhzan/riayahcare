@@ -10,6 +10,7 @@ import { TrendingUp, Clock, Award, ArrowRight } from "lucide-react"
 
 interface Procedure {
   id: string
+  slug?: string
   name: string
   specialty: string
   description: string
@@ -86,9 +87,10 @@ export default function EnhancedProceduresSection() {
         {/* Procedures Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {procedures.map((procedure) => (
-            <div
+            <Link
               key={procedure.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-100"
+              href={procedure.slug ? `/procedures/${procedure.slug}` : `/procedures`}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-green-100 block"
             >
               {/* Image */}
               {procedure.image_url && (
@@ -150,13 +152,13 @@ export default function EnhancedProceduresSection() {
                   </p>
                 </div>
 
-                {/* CTA Button */}
-                <button className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-3 rounded-lg transition-all transform hover:scale-105 shadow-md flex items-center justify-center gap-2">
-                  Request Quote
+                {/* CTA Button - Changed to span since Link wraps */}
+                <span className="w-full bg-gradient-to-r from-green-500 to-emerald-600 group-hover:from-green-600 group-hover:to-emerald-700 text-white font-semibold py-3 rounded-lg transition-all shadow-md flex items-center justify-center gap-2">
+                  View Details
                   <ArrowRight className="w-4 h-4" />
-                </button>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
