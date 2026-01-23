@@ -132,7 +132,7 @@ export default function EnhancedLandingBanner() {
   const currentBanner = banners[currentIndex]
 
   return (
-    <section className="relative h-screen w-full overflow-hidden pb-8">
+    <section className="relative h-full w-full overflow-hidden">
       {/* Banner Carousel */}
       <div className="relative h-full w-full">
         {banners.map((banner, index) => (
@@ -143,6 +143,7 @@ export default function EnhancedLandingBanner() {
             style={{
               backgroundImage: `url(${banner.image_url})`,
               backgroundSize: "cover",
+
               backgroundPosition: "center",
             }}
           >
@@ -235,15 +236,15 @@ export default function EnhancedLandingBanner() {
         </div>
 
         {/* Feature Tiles - Desktop Only */}
-        <div className="hidden lg:block absolute bottom-8 xl:bottom-12 2xl:bottom-20 left-0 right-0 px-4 lg:px-8 xl:px-16 2xl:px-20">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-4 gap-3 xl:gap-4 2xl:gap-6">
+        <div className="hidden lg:block absolute bottom-[12vh] xl:bottom-[14vh] 2xl:bottom-[18vh] left-80 right-0 px-4 lg:px-8 xl:px-16 2xl:px-20 pointer-events-none">
+          <div className="max-w-7xl mx-auto flex justify-end">
+            <div className="grid grid-cols-4 gap-4 xl:gap-6 w-full max-w-6xl pointer-events-auto">
               {features.map((feature, index) => {
                 const Icon = feature.icon
                 return (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-700/50 rounded-xl xl:rounded-2xl p-3 xl:p-4 2xl:p-6 hover:border-green-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/10"
+                    className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 backdrop-blur-md border border-slate-700/50 rounded-xl xl:rounded-2xl p-3 xl:p-4 2xl:p-6 hover:border-green-500/50 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-green-500/10 cursor-pointer"
                   >
                     <div className="flex flex-col items-center text-center space-y-2 xl:space-y-3 2xl:space-y-4">
                       <div className="w-10 h-10 xl:w-12 xl:h-12 2xl:w-16 2xl:h-16 rounded-lg xl:rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg">

@@ -241,25 +241,25 @@ export default function EnhancedNavbar() {
           "linear-gradient(90deg, rgba(250, 253, 255, 1) 0%, rgba(210, 247, 210, 0.68) 0%, rgba(224, 255, 224, 0.15) 21%, rgba(224, 255, 224, 0.1) 78%, rgba(210, 247, 210, 0.45) 100%)",
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         <div className="flex justify-between items-center h-20">
           {/* Logo - Left side */}
-          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0 mr-8">
             <Image
               src="/logo2.png"
               alt="Riayah Care Logo"
-              width={70}
-              height={70}
-              className="rounded-lg"
+              width={60}
+              height={60}
+              className="rounded-lg w-auto h-12 sm:h-14"
               priority
             />
-            <span className="font-bold text-xl text-gray-900 group-hover:text-emerald-500 transition">
+            <span className="font-bold text-lg sm:text-xl text-gray-900 group-hover:text-emerald-500 transition whitespace-nowrap">
               Riayah Care
             </span>
           </Link>
 
           {/* Desktop Menu - Right side with spacer */}
-          <div className="hidden lg:flex items-center gap-6 ml-auto">
+          <div className="hidden lg:flex items-center gap-2 xl:gap-8 ml-auto mr-4 xl:mr-8">
             {[
               { name: t("hospitals"), href: "/hospitals" },
               { name: t("doctors"), href: "/doctors" },
@@ -271,7 +271,7 @@ export default function EnhancedNavbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3 py-2 rounded-full border border-transparent text-gray-900 font-bold transition-all duration-300 hover:bg-white/80 hover:border-emerald-500/30 hover:shadow-md hover:-translate-y-1 flex items-center justify-center whitespace-nowrap"
+                className="px-3 py-2 rounded-full border border-transparent text-gray-900 font-bold text-sm xl:text-base transition-all duration-300 hover:bg-white/80 hover:border-emerald-500/30 hover:shadow-md hover:-translate-y-1 flex items-center justify-center whitespace-nowrap"
               >
                 {link.name}
               </Link>
