@@ -1,5 +1,5 @@
 
-//// components/admin/lead-activity-timeline.tsx
+// components/admin/lead-activity-timeline.tsx
 
 
 import { createClient } from "@/lib/supabase/server"

@@ -1,3 +1,5 @@
+//components/modals/send-email-modal.tsx
+
 "use client"
 
 import { useState, useEffect } from "react"
@@ -26,7 +28,13 @@ export default function SendEmailModal({ lead, onClose }: SendEmailModalProps) {
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null)
   const supabase = createClient()
 
-  const email = lead.email || lead.source_details?.email
+  // const email = lead.email || lead.source_details?.email
+  //const email = lead.email ?? lead.source_details?.email ?? lead.source_email ?? null
+
+  const [email, setEmail] = useState<string | null>(
+    lead.email ?? lead.source_details?.email ?? lead.source_email ?? null
+  )
+
 
   useEffect(() => {
     loadTemplates()
@@ -73,6 +81,9 @@ export default function SendEmailModal({ lead, onClose }: SendEmailModalProps) {
     return result
   }
 
+  // ....... Avoids Fast refresh crash by returning null asap 
+  if (!lead) return null
+
   const sendEmail = async () => {
     if (!email) {
       setMessage({ type: "error", text: "No email address available for this lead" })
@@ -92,7 +103,8 @@ export default function SendEmailModal({ lead, onClose }: SendEmailModalProps) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          lead_id: lead.lead_id,
+          //lead_id: lead.lead_id,
+          lead_id: lead.id ?? lead.lead_id,
           template_id: selectedTemplate || null,
           to: email,
           custom_subject: subject,
@@ -176,16 +188,16 @@ export default function SendEmailModal({ lead, onClose }: SendEmailModalProps) {
           {message && (
             <div
               className={`p-4 rounded-lg flex items-center gap-3 ${
-                message.type === "success"
-                  ? "bg-green-50 text-green-800 border border-green-200"
-                  : "bg-red-50 text-red-800 border border-red-200"
-              }`}
+message.type === "success"
+? "bg-green-50 text-green-800 border border-green-200"
+: "bg-red-50 text-red-800 border border-red-200"
+}`}
             >
               {message.type === "success" ? (
                 <Check className="w-5 h-5" />
               ) : (
-                <AlertCircle className="w-5 h-5" />
-              )}
+                  <AlertCircle className="w-5 h-5" />
+                )}
               <span>{message.text}</span>
             </div>
           )}
@@ -201,6 +213,17 @@ export default function SendEmailModal({ lead, onClose }: SendEmailModalProps) {
 
           {/* Template Selection */}
           <div>
+
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              If leads don't have email yet enter manually
+            </label>
+            <input
+              type="email"
+              value={email ?? ""}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              placeholder="Enter email if not available"
+            />
             <label className="block text-sm font-semibold text-gray-700 mb-2">
               Use Template (Optional)
             </label>
@@ -263,11 +286,11 @@ export default function SendEmailModal({ lead, onClose }: SendEmailModalProps) {
                 Sending...
               </>
             ) : (
-              <>
-                <Send className="w-4 h-4" />
-                Send Email
-              </>
-            )}
+                <>
+                  <Send className="w-4 h-4" />
+                  Send Email
+                </>
+              )}
           </button>
           <button
             onClick={onClose}

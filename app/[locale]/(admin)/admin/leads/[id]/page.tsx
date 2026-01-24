@@ -138,8 +138,12 @@ export default async function LeadDetail({
         </div>
 
         <div className="space-y-6">
-          <LeadActions lead={lead} />
-          <LeadActivityTimeline leadId={lead.lead_id} />
+
+          {/* <LeadActions lead={lead} /> */}
+
+            <LeadActions lead={{ ...lead, email: lead.email ?? sourceData?.email ?? null }} />
+
+              <LeadActivityTimeline leadId={lead.lead_id} />
         </div>
 
         <LeadActivityTimeline leadId={lead.lead_id} />

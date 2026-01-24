@@ -1,3 +1,5 @@
+//components/admin/lead-actions.tsx
+
 "use client"
 
 import { useModal } from "@/components/modal/modal-provider"

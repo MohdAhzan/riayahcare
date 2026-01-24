@@ -1,12 +1,6 @@
 
 // app/api/admin/leads/[id]/status/route.ts
 
-// app/api/admin/leads/[id]/status/route.ts
-
-
-
-// app/api/admin/leads/[id]/status/route.ts
-
 import { createClient } from "@/lib/supabase/server"
 import { revalidatePath } from "next/cache"
 import { NextResponse } from "next/server"
