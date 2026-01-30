@@ -1,11 +1,10 @@
 
 // components/testimonials-section.tsx
-
 "use client"
 
 import { useEffect, useState } from "react"
 import { createClient } from "@supabase/supabase-js"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Star, Play, Quote } from "lucide-react"
 
 interface Testimonial {
@@ -27,6 +26,7 @@ export default function TestimonialsSection() {
   const [loading, setLoading] = useState(true)
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null)
   const locale = useLocale()
+  const t = useTranslations("testimonials_section")
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -58,7 +58,7 @@ export default function TestimonialsSection() {
   if (loading) {
     return (
       <section className="py-20 bg-white">
-        <div className="text-center animate-pulse">Loading testimonials...</div>
+        <div className="text-center animate-pulse">{t("loading")} </div>
       </section>
     )
   }
@@ -72,10 +72,10 @@ export default function TestimonialsSection() {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Patient Success Stories
+              {t("title")}
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Real experiences from patients who found hope and healing with Riayah Care
+                            {t("subtitle")}
             </p>
           </div>
 
@@ -162,7 +162,7 @@ export default function TestimonialsSection() {
               href="/testimonials"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-8 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
             >
-              View All Stories
+              {t("view_all")}
             </a>
           </div>
         </div>

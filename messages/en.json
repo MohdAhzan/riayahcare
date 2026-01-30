@@ -135,12 +135,125 @@
   "doctors": {
     "title": "Meet Our Doctors",
     "tag": "Experienced medical professionals with proven track records",
-    "view_all": "View All Doctors"
+    "view_all": "View All Doctors",
+    "years_experience": "years experience",
+    "reviews": "reviews"
+  },
+  "doctor_detail": {
+    "loading": "Loading...",
+    "not_found": "Doctor not found",
+    "years_experience": "years experience",
+    "about": "About Doctor",
+    "experience": "Experience",
+    "stat_experience": "Experience",
+    "stat_expertise": "Expertise",
+    "stat_procedures": "Procedures",
+    "stat_languages": "Languages",
+    "stat_years": "yrs",
+    "conditions_treated": "Conditions Treated",
+    "procedures": "Procedures",
+    "education": "Education",
+    "languages_spoken": "Languages Spoken",
+    "why_choose": "Why Choose Dr.",
+    "why_items": {
+      "experience": "years of excellence",
+      "trusted": "Trusted by international patients",
+      "hospitals": "Works with top hospitals",
+      "approach": "Dedicated patient-first approach"
+    },
+    "sidebar": {
+      "why_riayah": "Why Riayah Care?",
+      "items": [
+        "Doctor & hospital coordination",
+        "International patient support",
+        "Transparent premium care",
+        "Dedicated medical advisors"
+      ],
+      "need_help": "Need Help Choosing?",
+      "help_desc": "Talk to our medical advisor for free guidance.",
+      "help_button": "Need Help?"
+    }
   },
   "hospitals": {
     "title": "Top Hospitals Worldwide",
     "tag": "Access world-class healthcare from top accredited hospitals",
     "view_all": "View All Hospitals"
+  },
+  "procedures_section": {
+    "title": "Popular Medical Procedures",
+    "subtitle": "World-class treatments with transparent pricing and proven success rates",
+    "tag": "Our Services",
+    "success_rate": "Success Rate",
+    "recovery": "Recovery",
+    "days": "days",
+    "cost_range": "Cost Range",
+    "view_details": "View Details",
+    "view_all": "View All Procedures"
+  },
+  "testimonials_section": {
+    "title": "Patient Success Stories",
+    "subtitle": "Real experiences from patients who found hope and healing with Riayah Care",
+    "loading": "Loading testimonials...",
+    "watch_video": "Watch Video",
+    "view_all": "View All Stories"
+  },
+  "blogs_section": {
+    "title": "Latest from Our Blog",
+    "subtitle": "Stay updated with medical news, patient stories, and healthcare insights",
+    "loading": "Loading blogs...",
+    "read_more": "Read More",
+    "view_all": "View All Articles"
+  },
+  "private_consultation": {
+    "title": "Schedule Your Private Patient Consultation",
+    "subtitle": "Book a free 30-minute video session with our International Patient Care team for personalized medical advice and guidance.",
+    "book_meeting": "Book Video Meeting",
+    "secure_consultation": "Secure and confidential consultation",
+    "full_name": "Your Full Name",
+    "email": "Your Email Address",
+    "phone": "Your Phone Number (with country code)",
+    "select_date": "Select Date",
+    "select_time": "Select Time",
+    "select_topic": "Select Discussion Topic",
+    "upload_report": "Upload your medical report (optional: .pdf, .jpg, .png, .docx)",
+    "schedule_button": "Schedule Meeting",
+    "scheduling": "Scheduling...",
+    "success_message": "Consultation scheduled successfully! We've received your request and will be in touch shortly to confirm.",
+    "error_message": "❌ Failed to schedule consultation. Please check your details and try again.",
+    "topics": {
+      "procedure": "Procedure Information & Cost Estimate",
+      "hospital": "Hospital & Doctor Selection",
+      "travel": "Travel & Accommodation Support",
+      "visa": "Medical Visa Guidance",
+      "followup": "Post-Procedure Follow-up",
+      "general": "General Inquiry"
+    },
+    "benefits": {
+      "title": "What You'll Get:",
+      "matching": {
+        "title": "Expert Medical Matching",
+        "desc": "Find the perfect hospital and specialist for your unique condition."
+      },
+      "planning": {
+        "title": "Detailed Procedure Planning",
+        "desc": "Transparent cost estimates, treatment roadmaps, and payment options."
+      },
+      "support": {
+        "title": "End-to-End Travel Support",
+        "desc": "Assistance with medical visas, travel logistics, and local accommodation."
+      }
+    },
+    "priority": {
+      "title": "⭐ Patient Priority Treatment",
+      "desc": "All scheduled consultations receive a full **Medical Travel Guide** including hospital profiles and patient testimonials."
+    }
+  },
+  "desktop_contact": {
+    "verified": "Verified doctors • Trusted hospitals",
+    "headline": "Book a Premium Medical Consultation",
+    "description": "Personalised guidance, hospital coordination, and doctor access handled end-to-end by Riayah Care.",
+    "book_button": "Book Premium Consultation",
+    "trusted": "Trusted by international patients"
   },
   "all_hospital_page": {
     "page_title": "Hospitals & Medical Centers",
@@ -349,5 +462,8 @@
     "cta_title": "Ready to Get Started?",
     "cta_subtitle": "Get a personalized quote for your treatment",
     "get_quote": "Get Free Quote"
+  },
+  "aboutus": {
+    "cta": "Learn More About Us"
   }
 }

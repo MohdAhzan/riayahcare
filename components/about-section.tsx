@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react"
 import { createClient } from "@supabase/supabase-js"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import { Heart, Target, Eye, Award } from "lucide-react"
 import Link from "next/link"
 
@@ -40,6 +40,7 @@ export default function AboutSection({ isLandingPage = true }: AboutSectionProps
   const [sections, setSections] = useState<AboutSection[]>([])
   const [loading, setLoading] = useState(true)
   const locale = useLocale()
+  const t = useTranslations("aboutus")
 
   useEffect(() => {
     const fetchAbout = async () => {
@@ -103,7 +104,7 @@ export default function AboutSection({ isLandingPage = true }: AboutSectionProps
                     href="/aboutus"
                     className="inline-block mt-6 lg:mt-8 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-6 lg:px-8 py-3 lg:py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
                   >
-                    Learn More About Us
+                    {t("cta")}
                   </Link>
                 )}
               </div>

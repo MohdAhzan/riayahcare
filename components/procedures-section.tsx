@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react"
 import { createClient } from "@/lib/supabase/client"
-import { useLocale } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 import Link from "next/link"
 import { TrendingUp, Clock, Award, ArrowRight } from "lucide-react"
 
@@ -29,6 +29,7 @@ export default function EnhancedProceduresSection() {
   const [procedures, setProcedures] = useState<Procedure[]>([])
   const [loading, setLoading] = useState(true)
   const locale = useLocale()
+  const t =useTranslations("procedures_section")
 
   useEffect(() => {
     const fetchProcedures = async () => {
@@ -74,13 +75,13 @@ export default function EnhancedProceduresSection() {
         {/* Header */}
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-green-100 text-green-700 rounded-full text-sm font-semibold mb-4">
-            Our Services
+            {t("tag")}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Popular Medical Procedures
+            {t("title")}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            World-class treatments with transparent pricing and proven success rates
+            {t("subtitle")}
           </p>
         </div>
 
@@ -126,7 +127,7 @@ export default function EnhancedProceduresSection() {
                   <div className="bg-green-50 rounded-lg p-3 border border-green-100">
                     <div className="flex items-center gap-2 mb-1">
                       <Award className="w-4 h-4 text-green-600" />
-                      <span className="text-xs font-medium text-gray-600">Success Rate</span>
+                      <span className="text-xs font-medium text-gray-600">{t("success_rate")}</span>
                     </div>
                     <p className="text-lg font-bold text-green-600">
                       {procedure.success_rate}%
@@ -136,17 +137,17 @@ export default function EnhancedProceduresSection() {
                   <div className="bg-blue-50 rounded-lg p-3 border border-blue-100">
                     <div className="flex items-center gap-2 mb-1">
                       <Clock className="w-4 h-4 text-blue-600" />
-                      <span className="text-xs font-medium text-gray-600">Recovery</span>
+                      <span className="text-xs font-medium text-gray-600">{t("recovery")}</span>
                     </div>
                     <p className="text-lg font-bold text-blue-600">
-                      {procedure.recovery_days} days
+                      {procedure.recovery_days} {t("days")}
                     </p>
                   </div>
                 </div>
 
                 {/* Cost Range */}
                 <div className="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4 mb-4 border border-gray-200">
-                  <p className="text-xs font-medium text-gray-600 mb-1">Cost Range</p>
+                  <p className="text-xs font-medium text-gray-600 mb-1">{t("cost_range")}</p>
                   <p className="text-2xl font-bold text-gray-900">
                     ₹{procedure.cost_min.toLocaleString()} - ₹{procedure.cost_max.toLocaleString()}
                   </p>
@@ -154,7 +155,7 @@ export default function EnhancedProceduresSection() {
 
                 {/* CTA Button - Changed to span since Link wraps */}
                 <span className="w-full bg-gradient-to-r from-green-500 to-emerald-600 group-hover:from-green-600 group-hover:to-emerald-700 text-white font-semibold py-3 rounded-lg transition-all shadow-md flex items-center justify-center gap-2">
-                  View Details
+                  {t("view_details")}
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </div>
@@ -168,7 +169,7 @@ export default function EnhancedProceduresSection() {
             href="/procedures"
             className="inline-flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-900 hover:border-green-600 hover:text-green-600 font-semibold px-8 py-4 rounded-xl transition-all transform hover:scale-105 shadow-lg"
           >
-            View All Procedures
+            {t("view_all")}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

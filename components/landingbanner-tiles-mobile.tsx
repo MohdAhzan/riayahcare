@@ -2,33 +2,9 @@
 "use client"
 
 import { Hospital, Stethoscope, Plane, UserCheck } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const features = [
-  {
-    icon: Hospital,
-    title: "Premium Hospitals",
-    description:
-      "Access internationally accredited medical facilities with state-of-the-art technology",
-  },
-  {
-    icon: Stethoscope,
-    title: "Expert Doctors",
-    description:
-      "Connect with board-certified specialists with proven international experience",
-  },
-  {
-    icon: Plane,
-    title: "Travel Support",
-    description:
-      "Complete travel arrangements including visa, accommodation, and transportation",
-  },
-  {
-    icon: UserCheck,
-    title: "Personal Care",
-    description:
-      "24/7 dedicated care coordinators for seamless communication and support",
-  },
-]
+
 interface BannerDisplayData {
   id: string
   title: string
@@ -55,6 +31,31 @@ const DEFAULT_BANNER: BannerDisplayData = {
 
 export default function LandingBannerTilesMobile() {
 
+  const t = useTranslations("landing")
+
+
+  const features = [
+    {
+      icon: Hospital,
+      title: t("features.hospital.title"),
+      description: t("features.hospital.description"),
+    },
+    {
+      icon: Stethoscope,
+      title: t("features.stethoscope.title"),
+      description: t("features.stethoscope.description"),
+    },
+    {
+      icon: Plane,
+      title: t("features.plane.title"),
+      description: t("features.plane.description"),
+    },
+    {
+      icon: UserCheck,
+      title: t("features.user_check.title"),
+      description: t("features.user_check.description"),
+    },
+  ]
   return (
     <section 
        className="lg:hidden py-16 px-4 bg-white/70 backdrop-blur-sm"

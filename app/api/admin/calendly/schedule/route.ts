@@ -21,6 +21,7 @@ export async function POST(req: Request) {
       .single()
 
     if (!settings || !settings.is_active) {
+
       return NextResponse.json({ error: "Calendly not configured" }, { status: 400 })
     }
 
@@ -38,7 +39,8 @@ export async function POST(req: Request) {
         event_type: event_type_uri || settings.default_event_type_uri,
       }),
     })
-
+  
+    
     const calendlyData = await response.json()
 
     if (calendlyData.resource) {

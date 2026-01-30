@@ -38,6 +38,7 @@ export default function EnhancedLandingBanner() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
   const t = useTranslations("landing")
 
+
   const features = [
     {
       icon: Hospital,
